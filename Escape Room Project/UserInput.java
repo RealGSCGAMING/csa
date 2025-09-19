@@ -24,6 +24,10 @@ import java.util.Scanner;
      * @return the valid command the user entered
      * 
      */
+
+     
+     static Scanner s = new Scanner(System.in);
+
     public static String getValidInput(String[] validInputs)
     {
         String input = "";
@@ -45,8 +49,11 @@ import java.util.Scanner;
     
     public static String getLine()
     {
-        Scanner s = new Scanner(System.in);
         return s.nextLine();
+    }
+
+    public static void close() {
+        s.close();
     }
 
 
