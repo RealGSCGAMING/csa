@@ -8,6 +8,9 @@ public class Cipher {
         String input;
         String code;
 
+        // DELETE
+        sc.close();
+
         while (true) {
             System.out.println("Encrypt (1) or decrypt (2)");
             input = sc.nextLine();

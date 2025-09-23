@@ -1,40 +1,41 @@
+
 /*
 * Activity 2.1.1
 */
- import java.util.Scanner;
+import java.util.Scanner;
 
- public class GetDigits
- {
-   public static void main(String[] args)
-   {
-     Scanner sc = new Scanner(System.in);
-     System.out.println("Enter a positive integer to see its digits: ");
-     int number = sc.nextInt();
+public class GetDigits {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    System.out.println("Enter a positive integer to see its digits: ");
+    int number = sc.nextInt();
 
-     /* your code here */
+    /* your code here */
+    int digits = 0;
 
-     int digit = 0;
-     int digits = 0;
+    boolean cont = false;
 
-     boolean cont = false;
+    int tempnum = number;
 
-     int tempnum = number;
-
-     while (!cont) {
+    while (!cont) {
       tempnum /= 10;
       System.out.println(tempnum);
       digits++;
       if (tempnum <= 0) {
         cont = true;
       }
-     }
+    }
 
-     // i lowkey have no clue how to finish this
+    System.out.println("Digits:");
 
-     // delete
-     System.out.println(digits);
-     System.out.println(digit);
-     sc.close();
-     
-   }
- }
+    for (int i = digits - 1; i >= 0; i--) {
+      int place = (int) Math.pow(10, i);
+      int digit = number / place;
+      System.out.println(digit);
+      number = number % place;
+    }
+
+    sc.close();
+
+  }
+}
