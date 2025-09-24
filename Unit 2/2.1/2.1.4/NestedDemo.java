@@ -5,6 +5,9 @@ import java.util.Scanner;
 
 public class NestedDemo
 {
+
+    // basically just a palindrome checker
+
   public static void main(String[] args)
   {
     Scanner sc = new Scanner(System.in);
