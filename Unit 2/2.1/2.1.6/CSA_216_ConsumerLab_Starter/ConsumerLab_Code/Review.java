@@ -224,15 +224,27 @@ public class Review {
       String word = s.substring(start, end);
       word = removePunctuation(word);
 
+      System.out.println(word);
+
       double sentiment = sentimentVal(word);
 
-      if (sentiment >= 0) {
-        word = randomPositiveAdj();
-      } else {
-        word = randomNegativeAdj();
-      }
+      System.out.println(sentiment);
 
-      word = word.substring(0, word.indexOf(","));
+      boolean valid = false;
+
+      while (!valid) {
+        if (sentiment >= 0) {
+          word = randomPositiveAdj();
+        } else {
+          word = randomNegativeAdj();
+        }
+
+        word = word.substring(0, word.indexOf(","));
+
+        if (sentimentVal(word) <= -2 || sentimentVal(word) >= 2) {
+          valid = true;
+        }
+      }
 
       s = s.substring(0, start - 1) + word + s.substring(end);
 
