@@ -4,13 +4,20 @@ public class ValidPalindrome {
 
     public static boolean isPalindrome(String s) {
 
+        // this is probably the worst possible way to remove the punctuation
         s = s.toLowerCase();
 
+        // letters list which also includes numbers
         String letters = "abcdefghijklmnopqrstuvwxyz1234567890";
+
         String newString = "";
 
         for (int i = 0; i < s.length(); i++) {
+
+            // convert the char value of the character at index i to a string value but only if it's a letter
             if (letters.contains(String.valueOf(s.charAt(i)))) {
+
+                // add the converted string value to the new string
                 newString += String.valueOf(s.charAt(i));
             }
         }
