@@ -29,47 +29,36 @@ public class Cipher {
                 System.out.println(code);
             }
         }
-        // sc.close();
     }
 
-    public static String encode(String inputString, int key){
-
-        int length = inputString.length();
-        int index = 0;
-        String code = "";
-        char letter;
-        int letterid;
-
-        while (index < length - 1) {
-
-            letter = inputString.charAt(index);
-            letterid = ((int) (letter));
-            code = code + letterid;
-            index++;
-        }
-
-        return code;
+    public static String encode(String inputString, int key) {
+        return "delete this";
     }
-
 
     public static String decode(String inputString, int key) {
+        return "delete this";
+    }
+
+    public static String letterFinder(String letter) {
+
+        letter = letter.toLowerCase();
+
+        String[] letters = {"a", "b"};
+
+        // DELETE
+        System.out.println(letters);
         
-        int length = inputString.length();
-        int index = 0;
-        String code = "";
-        int letter;
-        char letterid;
 
-        while (index < length - 1) {
-
-            letter = inputString.charAt(index) + inputString.charAt(index + 1);
-            letterid = ((char) (letter));
-            System.out.println((char) (letter));
-            code = code + letterid;
-            index += 2;
+        if (letter.equals("a")) {
+            //letterid = 1;
         }
+        if (letter.equals("b")) {
+        }
+        if (letter.equals("c")) {
 
-        return code;
+        }
+        return "delete this";
+        
     }
 
 }
