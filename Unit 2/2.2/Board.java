@@ -59,6 +59,8 @@ public class Board {
         tempPhrase = sc.nextLine().trim();
         numOfLines++;
       }
+
+      sc.close();
     } catch (Exception e) {
       System.out.println("Error reading or parsing phrases.txt\n");
     }
@@ -75,6 +77,8 @@ public class Board {
           tempPhrase = temp;
         }
       }
+
+      sc.close();
     } catch (Exception e) {
       System.out.println("Error reading or parsing phrases.txt");
     }

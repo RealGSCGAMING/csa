@@ -31,11 +31,11 @@ public class Player
   
   /* your code here - accessor(s) */ 
   public int getPoints() {
-    return 1;
+    return points;
   }
 
   public String getName() {
-    return "hi";
+    return name;
   }
   /* your code here - mutator(s) */ 
   public void setPoints(int pts) {
