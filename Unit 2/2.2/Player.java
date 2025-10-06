@@ -13,11 +13,11 @@ public class Player
   Scanner sc = new Scanner(System.in);
   /* your code here - constructor(s) */ 
 
-  public Player() {
+  public Player(int number) {
 
     points = 0;
 
-    System.out.println("Enter your name.");
+    System.out.println("Player " + number + ", enter your name.");
     setName(sc.nextLine());
     System.out.println("Welcome, " + name + "!");
   }
@@ -39,7 +39,7 @@ public class Player
   }
   /* your code here - mutator(s) */ 
   public void setPoints(int pts) {
-
+    points = pts;
   }
 
   public void setName(String newName) {

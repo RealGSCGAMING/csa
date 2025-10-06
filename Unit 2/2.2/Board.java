@@ -106,10 +106,9 @@ public class Board {
       } else {
         newSolvedPhrase += solvedPhrase.substring(i * 2, i * 2 + 1) + " ";
       }
-
-      System.out.println(newSolvedPhrase);
     }
     solvedPhrase = newSolvedPhrase;
+    System.out.println("\n" + solvedPhrase);
     return foundLetter;
   }
 }
