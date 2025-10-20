@@ -54,7 +54,7 @@ public class Board {
 
     int numOfLines = 0;
     try {
-      Scanner sc = new Scanner(new File("C:\\Users\\1961680\\Desktop\\CSA\\Unit 2\\2.2\\phrases.txt"));
+      Scanner sc = new Scanner(new File("C:\\Users\\1961680\\Desktop\\CSA\\Unit 2\\2.2\\Hangman\\phrases.txt"));
       while (sc.hasNextLine()) {
         tempPhrase = sc.nextLine().trim();
         numOfLines++;
@@ -69,7 +69,7 @@ public class Board {
 
     try {
       int count = 0;
-      Scanner sc = new Scanner(new File("C:\\Users\\1961680\\Desktop\\CSA\\Unit 2\\2.2\\phrases.txt"));
+      Scanner sc = new Scanner(new File("C:\\Users\\1961680\\Desktop\\CSA\\Unit 2\\2.2\\Hangman\\phrases.txt"));
       while (sc.hasNextLine()) {
         count++;
         String temp = sc.nextLine().trim();
