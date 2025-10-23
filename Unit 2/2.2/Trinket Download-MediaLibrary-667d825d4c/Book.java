@@ -13,6 +13,7 @@ public class Book {
     title = t;
     author = a;
     rating = 0;
+    // System.out.println("Adding book " + t);
   }
 
   /*** Accessor methods ***/
@@ -37,10 +38,10 @@ public class Book {
   }
 
   public boolean equals(Book b) {
+    // System.out.println("Checking book " + t);
     if (this.title.equals(b.title) && this.author.equals(b.author)) {
       return true;
-    } 
-    else {
+    } else {
       return false;
     }
   }
@@ -55,9 +56,18 @@ public class Book {
   }
 
   public void adjustRating(int r) {
+    // System.out.println("Adjusting rating by " + r);
     if (r <= 10 && r >= 0) {
       rating += r;
+    } else {
+      throw new IndexOutOfBoundsException("Not 1-10");
     }
 
   }
+
+  /*
+   * public String getInfo() {
+   * return "The current book information is " + info;
+   * }
+   */
 }

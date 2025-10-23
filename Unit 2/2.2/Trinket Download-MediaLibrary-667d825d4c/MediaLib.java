@@ -7,14 +7,15 @@ public class MediaLib {
   private Book book;
   private Movie movie;
   private Song song;
+  String lastMod;
 
   public void addBook(Book b) {
     if (book == null) {
       book = b;
       numEntries++;
       numBooks++;
-    }
-    else {
+      lastMod = Modified.getDate();
+    } else {
       System.out.println("You can only add one book to your library.");
     }
   }
@@ -28,8 +29,8 @@ public class MediaLib {
       movie = m;
       numEntries++;
       numMovies++;
-    }
-    else {
+      lastMod = Modified.getDate();
+    } else {
       System.out.println("You can only add one movie to your library.");
     }
   }
@@ -43,10 +44,22 @@ public class MediaLib {
       song = s;
       numEntries++;
       numSongs++;
-    }
-    else {
+      lastMod = Modified.getDate();
+    } else {
       System.out.println("You can only add one song to your library.");
     }
+  }
+
+  public void clearBook() {
+    book = null;
+  }
+
+  public void clearMovie() {
+    movie = null;
+  }
+
+  public void clearSong() {
+    song = null;
   }
 
   public String toString() {
@@ -63,6 +76,8 @@ public class MediaLib {
     if (song != null) {
       info = info + "\nSong: " + song.toString();
     }
+
+    info = info + ".\nLast modified on " + lastMod;
 
     return info;
   }
@@ -111,8 +126,10 @@ public class MediaLib {
     return numSongs;
   }
 
-  /*public void testBook(Book tester) {
-    tester.setTitle("New Title");
-    System.out.println(book);
-  }*/
+  /*
+   * public void testBook(Book tester) {
+   * tester.setTitle("New Title");
+   * System.out.println(book);
+   * }
+   */
 }
