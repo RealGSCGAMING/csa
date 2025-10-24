@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"java.project.sourcePaths": [
+			"Unit 2/2.2/Trinket Download-Hike-d4d8c80cf2",
+			"Unit 2/2.2/Hangman",
+			"Unit 2/2.1/2.1.6/Project",
+			"Unit 2/2.1/2.1.6/CSA_216_ConsumerLab_Starter/ConsumerLab_Code",
+			"Unit 2/2.1/2.1.4",
+			"Unit 2/2.1/2.1.1",
+			"Random",
+			"Unit 2/2.2/Trinket Download-MediaLibrary-667d825d4c"
+		]
+	}
+}

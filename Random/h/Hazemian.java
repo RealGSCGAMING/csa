@@ -13,6 +13,12 @@ public class Hazemian {
         }
     }
 
+    public void sendMessage() {
+        Message m = new Message(this);
+
+        System.out.println(name + "\n" + m.getContent() + "\n");
+    }
+
     // primitive information
     public int getLevel() {
         return level;
@@ -27,8 +33,8 @@ public class Hazemian {
         this.level = level;
         this.name = name;
 
-        System.out.println(name);
-        System.out.println(level);
+        //System.out.println(name);
+        //System.out.println(level);
     }
 
     public Hazemian(int level) {
