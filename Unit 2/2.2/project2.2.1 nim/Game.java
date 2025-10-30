@@ -145,9 +145,11 @@ public class Game {
 
     private int calculateBotMove(int currentPieces, int maxTake) {
 
+        int bestNum = 0;
+
         for (int i = 1; i <= maxTake; i++) {
             if (currentPieces - i == 3) {
-                System.out.println("Bot: I'm going to win.");
+                System.out.println("Bot: I'm going to win with " + i);
                 return i;
             } else {
 
@@ -155,18 +157,17 @@ public class Game {
 
                 int newMaxTake = Math.max(1, newCurrent / 2);
 
-                // System.out.println(newCurrent);
-                // System.out.println(newMaxTake);
-
-                if (newCurrent - newMaxTake == 3) {
-                    System.out.println("Bot: This number won't work: " + i);
+                if (newCurrent - newMaxTake > 3) {
+                    System.out.println("Bot: This number won't need to be checked: " + i);
+                    bestNum = i;
 
                 } else {
+                    System.out.println("Bot: I'm checking " + i);
 
                     boolean valid = true;
 
                     for (int i2 = 1; i2 <= newMaxTake; i2++) {
-                        if (!(newCurrent - i2 == 3)) {
+                        if (/*!*/(newCurrent - i2 == 3)) {
                             System.out.println("Bot: I'm not using " + i);
                             valid = false;
                             break;
@@ -179,6 +180,11 @@ public class Game {
                     }
                 }
             }
+        }
+
+        if (bestNum != 0) {
+            System.out.println("Bot: This number should work.");
+            return bestNum;
         }
 
         System.out.println("Bot: There's nothing I can do here. Picking a random number.");
