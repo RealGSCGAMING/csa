@@ -53,7 +53,7 @@ public class Game {
                 int take;
                 if (current.isBot()) {
                     // Simple bot: random legal move
-                    take = rand.nextInt(maxTake) + 1;
+                    take = calculateBotMove(pile, maxTake); // rand.nextInt(maxTake) + 1;
                     System.out.println(current.getName() + " (bot) takes " + take + ".");
                 } else {
                     take = readIntInRange("Enter pieces to take: ", 1, maxTake);
@@ -80,17 +80,19 @@ public class Game {
             // Play again?
             playAgain = askYesNo("Play again? (y/n) ");
             if (playAgain) {
-                // Prepare for a new game: just repopulate and pick a new first player inside the loop
+                // Prepare for a new game: just repopulate and pick a new first player inside
+                // the loop
                 System.out.println();
             }
         } while (playAgain);
 
-        System.out.println("\nThe winner is " + winner.getName() + " with " + winner.getScore() + " points!");
+        System.out.println((player1.getScore() == player2.getScore())
+                ? "Both players have tied with " + winner.getScore() + " points!"
+                : "\nThe winner is " + winner.getName() + " with " + winner.getScore() + " points!");
         System.out.println("\nThanks for playing!\n");
         return winner;
     }
 
-   
     private void displayScoreboard() {
         System.out.println("\n=== Scoreboard ===");
         System.out.printf("%s: %d\n", player1.getName(), player1.getScore());
@@ -102,8 +104,10 @@ public class Game {
         while (true) {
             System.out.print(prompt);
             String s = in.nextLine().trim().toLowerCase();
-            if (s.equals("y") || s.equals("yes")) return true;
-            if (s.equals("n") || s.equals("no")) return false;
+            if (s.equals("y") || s.equals("yes"))
+                return true;
+            if (s.equals("n") || s.equals("no"))
+                return false;
             System.out.println("Please enter y/n.");
         }
     }
@@ -111,7 +115,8 @@ public class Game {
     private String readNonEmptyLine() {
         while (true) {
             String s = in.nextLine().trim();
-            if (!s.isEmpty()) return s;
+            if (!s.isEmpty())
+                return s;
             System.out.print("Please enter a non-empty name: ");
         }
     }
@@ -134,7 +139,49 @@ public class Game {
     }
 
     private String randomBotName() {
-        String[] names = {"HAL", "Robo", "BitCrusher", "Nim", "Ada", "Turing"};
+        String[] names = { "HAL", "Robo", "BitCrusher", "Nim", "Ada", "Turing" };
         return names[rand.nextInt(names.length)] + ((int) (Math.random() * 9000) + 1000);
+    }
+
+    private int calculateBotMove(int currentPieces, int maxTake) {
+
+        for (int i = 1; i <= maxTake; i++) {
+            if (currentPieces - i == 3) {
+                System.out.println("Bot: I'm going to win.");
+                return i;
+            } else {
+
+                int newCurrent = currentPieces - i;
+
+                int newMaxTake = Math.max(1, newCurrent / 2);
+
+                // System.out.println(newCurrent);
+                // System.out.println(newMaxTake);
+
+                if (newCurrent - newMaxTake == 3) {
+                    System.out.println("Bot: This number won't work: " + i);
+
+                } else {
+
+                    boolean valid = true;
+
+                    for (int i2 = 1; i2 <= newMaxTake; i2++) {
+                        if (!(newCurrent - i2 == 3)) {
+                            System.out.println("Bot: I'm not using " + i);
+                            valid = false;
+                            break;
+                        }
+                    }
+
+                    if (valid) {
+                        System.out.println("Bot: I'm stopping the other player from winning.");
+                        return i;
+                    }
+                }
+            }
+        }
+
+        System.out.println("Bot: There's nothing I can do here. Picking a random number.");
+        return rand.nextInt(maxTake) + 1;
     }
 }
