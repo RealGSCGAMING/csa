@@ -19,14 +19,26 @@ public class Game {
         // Choose Bot or 2-player
         boolean vsBot = askYesNo("Play against a bot? (y/n) ");
         boolean botVsBot = false;
+        boolean fast = false;
+        int times = 0;
+
+        int p1turns = 0;
+        int p2turns = 0;
 
         // Choose Player vs. Bot or Bot vs. Bot
         if (vsBot) {
             botVsBot = askYesNo("Bot vs Bot? (y/n) ");
             if (botVsBot) {
-                player1.setType(botVsBot);
-                System.out.print("In Bot vs Bot, press Enter to continue running.");
-                in.nextLine();
+                player1.setType(true);
+                fast = askYesNo("Would you like to simulate multiple games quickly (y) or watch individual games (n)?");
+                if (fast) {
+                    System.out.println("Press Enter to begin the simulation.");
+                    in.nextLine();
+                }
+                else {
+                    System.out.println("Press Enter to advance the simulation.");
+                    in.nextLine();
+                }
             }
         }
 
@@ -41,7 +53,7 @@ public class Game {
             player2.setName(readNonEmptyLine());
         }
 
-        boolean playAgain;
+        boolean playAgain = true;
 
         // repeat until not playing again
         do {
@@ -55,6 +67,13 @@ public class Game {
             Player current = rand.nextBoolean() ? player1 : player2;
             System.out.println("First turn: " + current.getName());
 
+            if (current.equals(player1)) {
+                p1turns++;
+            }
+            else {
+                p2turns++;
+            }
+
             // Turn loop
             while (Board.getPieces() > 0) {
                 int pile = Board.getPieces();
@@ -64,7 +83,7 @@ public class Game {
                 System.out.println(current.getName() + "'s turn. You may take 1 to " + maxTake + " pieces.");
 
                 // if bot vs bot game, wait for user to press enter before moving on
-                if (botVsBot) {
+                if (botVsBot && !fast) {
                     in.nextLine();
                 }
 
@@ -80,7 +99,7 @@ public class Game {
                 Board.takePieces(take);
 
                 // if bot vs bot game, wait for user to press enter before moving on
-                if (botVsBot) {
+                if (botVsBot && !fast) {
                     in.nextLine();
                 }
 
@@ -100,6 +119,18 @@ public class Game {
             // Scoreboard
             displayScoreboard();
 
+            if (fast) {
+                if (times == 50) {
+                    System.out.println(player1.getName() + " had " + player1.getScore() + " points and went first " + p1turns + " times.");
+                    System.out.println(player2.getName() + " had " + player2.getScore() + " points and went first " + p2turns + " times.");
+                    System.out.println("As you can see, if you go first, you are more likely to win!");
+                    break;
+                }
+                else {
+                    times++;
+                }
+            }
+            else {
             // Play again?
             playAgain = askYesNo("Play again? (y/n) ");
             if (playAgain) {
@@ -107,6 +138,7 @@ public class Game {
                 // the loop
                 System.out.println();
             }
+        }
         } while (playAgain);
 
         // display the winner when quitting
