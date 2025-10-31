@@ -29,7 +29,7 @@ public class Game {
                 in.nextLine();
             }
         }
-        
+
         // Create Player 2
         player2 = new Player();
         if (vsBot) {
@@ -195,11 +195,11 @@ public class Game {
                 int newCurrent = currentPieces - i;
                 int newMaxTake = Math.max(1, newCurrent / 2);
 
-                // if by taking i, the 2nd player will not be able to make the pile size 3 or 7, set i as the new best choice
+                // if by taking i, the 2nd player will not be able to make the pile size 3 or 7,
+                // set i as the new best choice
                 if (newCurrent - newMaxTake > 3 && newCurrent - newMaxTake > 7) {
                     bestNum = i;
-                }
-                else {
+                } else {
                 }
             }
         }
@@ -208,7 +208,7 @@ public class Game {
         if (bestNum != 0) {
             return bestNum;
         }
-        
+
         // if bot can't put itself in a winning situation, take a random amount
         return rand.nextInt(maxTake) + 1;
     }

@@ -17,6 +17,7 @@ public class Board {
     /** Remove n pieces from the board (assumes caller validated n). */
     public static void takePieces(int n) {
         pieces -= n;
-        if (pieces < 0) pieces = 0;
+        if (pieces < 0)
+            pieces = 0;
     }
 }
