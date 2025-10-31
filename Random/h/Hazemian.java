@@ -16,7 +16,7 @@ public class Hazemian {
     public void sendMessage() {
         Message m = new Message(this);
 
-        System.out.println(name + "\n" + m.getContent() + "\n");
+        System.out.println(name + " (Level " + level + ")\n" + m.getContent() + "\n");
     }
 
     // primitive information
