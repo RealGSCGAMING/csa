@@ -120,10 +120,15 @@ public class Game {
             displayScoreboard();
 
             if (fast) {
-                if (times == 50) {
+                if (times == 20) {
                     System.out.println(player1.getName() + " had " + player1.getScore() + " points and went first " + p1turns + " times.");
                     System.out.println(player2.getName() + " had " + player2.getScore() + " points and went first " + p2turns + " times.");
-                    System.out.println("As you can see, if you go first, you are more likely to win!");
+                    if ((player1.getScore() > player2.getScore() && p1turns > p2turns) || (player1.getScore() < player2.getScore() && p1turns < p2turns)) {
+                        System.out.println("As you can see, if you go first, you are more likely to win!");
+                    }
+                    else {
+                        System.out.println("Since the player who went first more times had a lower score, it likely made mistakes that lost it points.");
+                    }
                     break;
                 }
                 else {
