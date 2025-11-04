@@ -38,7 +38,9 @@ public class TargetedAd {
     DataCollector d = new DataCollector();
     d.setData("socialMediaPosts.txt", "targetWords.txt");
 
-    String targets = "";
+    String dogTargets = "";
+    String catTargets = "";
+    String etcTargets = "";
     
     while (true) {
 
@@ -47,8 +49,6 @@ public class TargetedAd {
       // if there are no more posts end loop
       if (currentPost.equals("NONE")) break;
 
-      //System.out.println("Current post: " + currentPost);
-
       while (true) {
 
         String currentWord = d.getNextTargetWord().toLowerCase();
@@ -56,26 +56,38 @@ public class TargetedAd {
         // if all words have been checked end loop
         if (currentWord.equals("none")) break;
 
-        //System.out.print("Checking word: " + currentWord + ": ");
-
-        // if the post contains the word and the word is not in the username
+        // check if the post contains the word and the word is not in the username
         if (currentPost.toLowerCase().indexOf(currentWord) != -1 && currentPost.toLowerCase().indexOf(currentWord) > currentPost.indexOf(" ")) {
-
-          //System.out.println("true");
 
           boolean valid = true;
 
-          // check for words that make the post invalid
+          // check for words that make the post invalid (such as "hotdog")
           for (int i = 0; i < d.targetWordsNot.size(); i++) {
+            
             if (currentPost.toLowerCase().indexOf(d.targetWordsNot.get(i)) != -1) {
+
+              // Skip updating targets if post is invalid
               valid = false;
+
             }
           }
 
-          // update targets variable with new user separated by spaces
-          if (valid) targets = targets + currentPost.substring(0, currentPost.indexOf(" ") + 1);
-          
-          //System.out.println("Targets: " + targets);
+          // Update the target variables depending on which pet the user owns
+          if (valid) {
+
+            if (d.currentTargetWordType() == 1) {
+              dogTargets = dogTargets + currentPost.substring(0, currentPost.indexOf(" ") + 1);
+            }
+
+            else if (d.currentTargetWordType() == 2) {
+              catTargets = catTargets + currentPost.substring(0, currentPost.indexOf(" ") + 1);
+            }
+
+            // if it can't figure out what kind of pet
+            else {
+              etcTargets = etcTargets + currentPost.substring(0, currentPost.indexOf(" ") + 1);
+            }
+          } 
 
           // reset current target word for next post
           d.resetTargetWord();
@@ -86,10 +98,15 @@ public class TargetedAd {
       }
     }
 
-    System.out.println(targets);
+    // Reset the advertisements file
+    d.clearFile("advertisement.txt");
 
-    d.prepareAdvertisement("advertisement.txt", targets, "This is a targeted ad.");
+    // Create advertisements for dog, cat, and other animal owners
+    d.prepareAdvertisement("advertisement.txt", dogTargets, "Your dog will love our pet food!");
+    d.prepareAdvertisement("advertisement.txt", catTargets, "Your cat will love our pet food!");
+    d.prepareAdvertisement("advertisement.txt", etcTargets, "Your furry friend will love our pet food!");
+
+    System.out.println("done");
 
   }
-
 }

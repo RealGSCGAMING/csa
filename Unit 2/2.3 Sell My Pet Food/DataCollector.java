@@ -71,7 +71,6 @@ public class DataCollector
           this.targetWordsNot.add(add.substring(1));
         }
       }
-      System.out.println(targetWordsNot);
     } catch (Exception e) { System.out.println("Error reading or parsing" + targetWords + "\n" + e); }
   }
 
@@ -105,13 +104,18 @@ public class DataCollector
     if (currentTargetWord < targetWords.size())
     {
       this.currentTargetWord++;
-      return targetWords.get(currentTargetWord - 1);
+      return targetWords.get(currentTargetWord - 1).substring(1);
     }
     else
     {
       this.currentTargetWord = 0;
       return "NONE";
     }
+  }
+
+  // Returns the target of the current target word (cat,dog,etc)
+  public int currentTargetWordType() {
+    return Integer.valueOf(targetWords.get(currentTargetWord - 1).substring(0,1));
   }
 
   /**
@@ -125,13 +129,27 @@ public class DataCollector
   {
     try
     {
-      FileWriter fw = new FileWriter(filename);
+      FileWriter fw = new FileWriter(filename, true);
       // Strin method split splits a string based on the provided token
       // and returns an array of individual substrings
       for (String un : usernames.split(" "))
       {
           fw.write("@" + un + " " + advertisement +"\n");
       }
+      fw.close();
+    }
+    catch (IOException e)
+    {
+        System.out.println("Could not write to file. " + e);
+    }
+  }
+
+  // Clears the file at filename
+  public void clearFile(String filename) {
+    try
+    {
+      FileWriter fw = new FileWriter(filename);
+      fw.write("");
       fw.close();
     }
     catch (IOException e)
@@ -194,12 +212,13 @@ public class DataCollector
     StringBuilder usernames = new StringBuilder();
     java.util.HashSet<String> seen = new java.util.HashSet<>();
     String post = dc.getNextPost();
-    
+
     dc.resetCurrentPost();
+
     while (!post.equals("NONE")) {
       boolean matches = false;
       String word = dc.getNextTargetWord();
-      String post = dc.getNextPost();
+      
       
       while (!word.equals("NONE") && !matches) {
         if (post.toLowerCase().contains(word.toLowerCase())) {
@@ -213,7 +232,7 @@ public class DataCollector
       if (matches) {
         String username = extractUsername(post);
         if (username != null && seen.add(username)) {
-          usernames.append(username). append(" ");
+          usernames.append(username).append(" ");
         }
       }
 
@@ -227,7 +246,7 @@ public class DataCollector
   private static String extractUsername(String post) {
     if (post == null || !post.startsWith("@")) return null;
     int space = post.indexOf(' ');
-    return (space > 1) ? post.substring(1. space) : null;
+    return (space > 1) ? post.substring(1, space) : null;
   }
 
   public static void main(String[] args) {
