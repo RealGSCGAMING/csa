@@ -191,7 +191,9 @@ public class DataCollector
     currentTargetWord = 0;
   }
 
-  public class SellMyPetFood {
+  // ALTERNATE ALGORITHM
+
+  /*public class SellMyPetFood {
     public static void main(String[] args) {
       DataCollector dc = new DataCollector();
 
@@ -257,5 +259,5 @@ public class DataCollector
     dc.prepareAdvertisement("targeted_ads.txt", users, "Love your pet? Try PetJoy Food!");
     System.out.println("Done - check targeted_ads.txt");
 
-  }
+  }*/
 } 
