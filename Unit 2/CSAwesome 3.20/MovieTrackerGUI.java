@@ -1,8 +1,9 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
-import java.io.FileWriter;
-import java.io.IOException;
+//import java.awt.event.*;
+//import java.io.FileWriter;
+//import java.io.IOException;
+import java.time.LocalDate;
 
 // GUI Input Form for your class
 // Fork this repl
@@ -35,14 +36,17 @@ public class MovieTrackerGUI {
     JLabel directorLabel = new JLabel("Director: ");
     JTextField directorField = new JTextField(25); 
 
-    JLabel monthJLabel = new JLabel("Release Month (1-12): ")
+    JLabel monthJLabel = new JLabel("Release Month (1-12): ");
     JTextField monthField = new JTextField(5);
     JLabel dayLabel = new JLabel("Day (1-31): ");
     JTextField dayField = new JTextField(5);
     JLabel yearJLabel = new JLabel("Year: ");
     JTextField yearField = new JTextField(8);
 
-    JLabel ratingLabel = new JLabel("Box Office Income (millions): ");
+    JLabel ratingLabel = new JLabel("Rating % (0-100): ");
+    JTextField ratingField = new JTextField(10);
+
+    JLabel incomeLabel = new JLabel("Income (millions): ");
     JTextField incomeField = new JTextField(12);
 
     JCheckBox releasedBox = new JCheckBox("Movie is already released");
@@ -58,41 +62,70 @@ public class MovieTrackerGUI {
     JLabel outputLabel = new JLabel();
     outputLabel.setFont(new Font("Arial", Font.PLAIN, 14));
     outputLabel.setForeground(Color.DARK_GRAY);
-    outputLabel.setVerticalAlignment(SwingConstants);
-    outputLabel.setPreferredSize();
+    outputLabel.setVerticalAlignment(SwingConstants.TOP);
+    outputLabel.setPreferredSize(new Dimension(200, 50));
+
+    JTextArea outputTextArea = new JTextArea(10, 60);
+    outputTextArea.setEditable(false);
+    outputTextArea.setLineWrap(true);
+    outputTextArea.setWrapStyleWord(true);
+    JScrollPane scroll = new JScrollPane(outputLabel);
 
 
-    // add components to JFrame in this order
-    frame.add(firstNameLabel);
-    frame.add(firstNameField);
-    frame.add(lastNameLabel);
-    frame.add(lastNameField);
+
+    // add components to JFrame 
+    frame.add(titLabel);
+    frame.add(nameLabel);
+    frame.add(nameField);
+    frame.add(directorLabel);
+    frame.add(directorField);
+    frame.add(monthJLabel);
+    frame.add(monthField);
+    frame.add(dayLabel);
+    frame.add(dayField);
+    frame.add(yearJLabel);
+    frame.add(yearField);
+    frame.add(ratingLabel);
+    frame.add(ratingField);
+    frame.add(incomeLabel);
+    frame.add(incomeField);
+    frame.add(releasedBox);
     frame.add(enterButton);
-    frame.add(outputLabel);
+    frame.add(scroll);
+
     
     // add event listener for button click
-    enterButton.addActionListener(new ActionListener() {
-    public void actionPerformed(ActionEvent e) 
-    {
-      // Create an object of your class with the form inputs
-      MyClass c = new MyClass(firstNameField.getText(),
-      lastNameField.getText() );
-      // print out in label using c.toString()
-      outputLabel.setText("You entered "
-                          + c);
-      // Uncomment to write to the file output.txt
-      /*
-       try {
-      FileWriter file = new FileWriter("output.txt", true); // true appends
-      file.write(c  + "\n" );
-      file.close();
-     
-    } catch (IOException ex) {
-      System.out.println("An I/O error occurred.");
-      ex.printStackTrace();
-    }
-       */
-      
+    enterButton.addActionListener(e -> {
+    try {
+        String title = nameField.getText().trim();
+        System.out.println(title);
+        String director = directorField.getText().trim();
+        System.out.println(director);
+        int month = Integer.parseInt(monthField.getText().trim());
+        System.out.println(month);
+        int day = Integer.parseInt(dayField.getText().trim());
+        System.out.println(day);
+        int year = Integer.parseInt(yearField.getText().trim());
+        System.out.println(year);
+
+        LocalDate releaseDate = LocalDate.of(year, month, day);
+        //Date releaseDate = new Date(month, day, year);
+
+        int rating = ratingField.getText().isEmpty() ? 0 : Integer.parseInt(ratingField.getText().trim());
+        System.out.println(rating);
+        double income = incomeField.getText().isEmpty() ? 0.0 : Double.parseDouble(incomeField.getText().trim());
+        System.out.println(income);
+        boolean released = releasedBox.isSelected();
+
+        Movie movie = new Movie(title, releaseDate, director, rating, income);
+        //movie.released = released;
+
+        System.out.println(movie);
+
+        outputTextArea.append(movie.toString() + "\n\n");
+
+    } catch (Exception ee) {
+      System.out.println("An error occured.\n" + ee.getMessage());
     }}); // end of actionlistener
     
     // make the frame visible
@@ -100,36 +133,3 @@ public class MovieTrackerGUI {
   }
 }
 
-// Copy in your own class here and rename the file
-class MyClass
-{
-  private String firstname;
-  private String lastname;
-
-  public MyClass()
-  {
-    firstname = "";
-    lastname = "";
-  }
-
-  public MyClass(String f, String l)
-  {
-    firstname = f;
-    lastname = l;
-  }
-
-  public String getFirstname()
-  {
-    return firstname;
-  }
-  public String getLastname()
-  {
-    return lastname;
-  }
-  public String toString()
-  {
-    return "Firstname: " + firstname +
-      " \nLastname: " + lastname;
-  }
-    
-}

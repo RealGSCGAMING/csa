@@ -114,6 +114,10 @@ public class Movie {
 
     public void setReleaseDate(LocalDate date) {
         this.releaseDate = date;
+        released = checkIfReleased();
+        if (!released) {
+            income = 0.0;
+        }
     }
 
     public void setIncome(double income) {
