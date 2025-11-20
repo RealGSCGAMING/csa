@@ -6,10 +6,22 @@ public class Runner {
 
     // global variables
     public static LocalDate currentDate = LocalDate.now();
-    static ArrayList<Movie> movies = new ArrayList<Movie>();
-    static Scanner sc = new Scanner(System.in);
+    public static ArrayList<Movie> movies = new ArrayList<Movie>();
+    private static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
+
+        movies.add(new Movie("Movie 1", LocalDate.of(2010, 10, 15), "Person", 99, 8.56));
+        movies.add(new Movie("Movie 2"));
+
+        GUI.setup();
+        GUI.movieList();
+
+        console();
+    }
+
+    // runs the console UI
+    private static void console() {
 
         // starter movies
         movies.add(new Movie("Movie 1", LocalDate.of(2010, 10, 15), "Person", 99, 8.56));
@@ -47,8 +59,7 @@ public class Runner {
                 // process input
                 if (sc.nextLine().toLowerCase().equals("e")) {
                     editMovie(input);
-                }
-                else {
+                } else {
                     break;
                 }
             }
@@ -60,8 +71,13 @@ public class Runner {
 
     }
 
+    // adds a premade movie object to the movies list
+    public static void addMovieObject(Movie m) {
+        movies.add(m);
+    }
+
     // prints a list of the movie titles
-    public static void printMovieList() {
+    private static void printMovieList() {
 
         // print the title of each movie
         for (int i = 0; i < movies.size(); i++) {
@@ -73,17 +89,17 @@ public class Runner {
     }
 
     // prints the movie's at the index's information using toString
-    public static void printMovieInfo(int m) {
+    private static void printMovieInfo(int m) {
         System.out.println(movies.get(m));
     }
 
     // clears the console
-    public static void clearConsole() {
+    private static void clearConsole() {
         System.out.print("\033\143");
     }
 
     // gets an integer input from low to high
-    public static int getNumberInput(int low, int high) {
+    private static int getNumberInput(int low, int high) {
         while (true) {
             try {
                 int i = Integer.valueOf(sc.nextLine());
@@ -100,7 +116,8 @@ public class Runner {
     // creates a new movie object from user input (title only)
     public static void addNewMovie() {
 
-        // only asks for the title initially, user can edit other fields in the edit menu
+        // only asks for the title initially, user can edit other fields in the edit
+        // menu
         clearConsole();
         System.out.println("Enter movie title");
         String nTitle = sc.nextLine();
@@ -111,7 +128,7 @@ public class Runner {
     }
 
     // allows the user to edit the movie's properties or delete it
-    public static void editMovie(int input) {
+    private static void editMovie(int input) {
 
         clearConsole();
 

@@ -1,7 +1,7 @@
 import java.time.LocalDate;
 
 public class Movie {
-    
+
     private String title;
     private String director;
     private int rating;
@@ -10,7 +10,7 @@ public class Movie {
     private boolean released;
 
     LocalDate tw = LocalDate.of(2005, 1, 2);
-    
+
     // constructors
     public Movie(String t) {
         title = t;
@@ -58,25 +58,29 @@ public class Movie {
     }
 
     // functional methods
-    
+
     public String dateToString() {
         return releaseDate.getMonthValue() + "/" + releaseDate.getDayOfMonth() + "/" + releaseDate.getYear();
     }
 
     public LocalDate randomDate() {
-        return LocalDate.of((int) (Math.random() * 200) + 1900, (int) (Math.random() * 11) + 1, (int) (Math.random() * 29) + 1);
+        return LocalDate.of((int) (Math.random() * 200) + 1900, (int) (Math.random() * 11) + 1,
+                (int) (Math.random() * 29) + 1);
     }
 
     public boolean checkIfReleased() {
-        if (Runner.currentDate.isAfter(releaseDate)) return true; else return false;
+        if (Runner.currentDate.isAfter(releaseDate))
+            return true;
+        else
+            return false;
     }
 
     // get methods
-    public String getTitle(){
+    public String getTitle() {
         return title;
     }
 
-    public String getDirector(){
+    public String getDirector() {
         return director;
     }
 
@@ -85,7 +89,7 @@ public class Movie {
     }
 
     public LocalDate getReleaseDate() {
-       return releaseDate; 
+        return releaseDate;
     }
 
     public double getIncome() {
@@ -94,6 +98,7 @@ public class Movie {
         }
         return income;
     }
+
     public boolean isReleased() {
         return released;
     }
@@ -125,22 +130,23 @@ public class Movie {
             throw new IllegalStateException("Cannot set income unless movie is marked as released");
         }
 
-        if (income < 0 ) {
+        if (income < 0) {
             throw new IllegalArgumentException("Income cannot be a negative number");
-        } 
+        }
         this.income = income;
     }
 
     // method to mark movie as released (used when release date passes)
-    
+
     public void markAsReleased() {
         this.released = true;
     }
-    
+
     // toString
-    
+
     public String toString() {
-        return "-- " + title + " --\nDirector: " + director + "\nRelease Date: " + dateToString() + "\nRotten Tomatoes Rating: " + rating + (released ? "%\nGross income: $" + income + " million" : "%");
+        return "-- " + title + " --\nDirector: " + director + "\nRelease Date: " + dateToString()
+                + "\nRotten Tomatoes Rating: " + rating + (released ? "%\nGross income: $" + income + " million" : "%");
     }
 
     private int yearFromDate() {
@@ -149,11 +155,11 @@ public class Movie {
 
     // main method for testing
 
-        // Output: xyz movie (year released)
-        // Director: xyz director
-        // Releaste date: xyz release date
-        // Status: true || false released
-        // Rotten Tomatoes = rating
-        // Box Office = income
-    
+    // Output: xyz movie (year released)
+    // Director: xyz director
+    // Releaste date: xyz release date
+    // Status: true || false released
+    // Rotten Tomatoes = rating
+    // Box Office = income
+
 }
