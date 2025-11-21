@@ -149,9 +149,9 @@ public class Movie {
                 + "\nRotten Tomatoes Rating: " + rating + (released ? "%\nGross income: $" + income + " million" : "%");
     }
 
-    private int yearFromDate() {
+    /*private int yearFromDate() {
         return releaseDate != null ? releaseDate.getYear() : 0;
-    }
+    }*/
 
     // main method for testing
 
