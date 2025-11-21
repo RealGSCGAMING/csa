@@ -15,8 +15,11 @@ public class Runner {
         movies.add(new Movie("Movie 2"));
 
         GUI.setup();
+        GUI.configMovieList();
         GUI.movieList();
 
+        System.out.println("If you would like to use the console UI, type C.");
+        while (!sc.nextLine().toLowerCase().equals("c"));
         console();
     }
 
@@ -24,8 +27,8 @@ public class Runner {
     private static void console() {
 
         // starter movies
-        movies.add(new Movie("Movie 1", LocalDate.of(2010, 10, 15), "Person", 99, 8.56));
-        movies.add(new Movie("Movie 2"));
+        //movies.add(new Movie("Movie 1", LocalDate.of(2010, 10, 15), "Person", 99, 8.56));
+        //movies.add(new Movie("Movie 2"));
 
         while (true) {
 
@@ -74,6 +77,10 @@ public class Runner {
     // adds a premade movie object to the movies list
     public static void addMovieObject(Movie m) {
         movies.add(m);
+    }
+
+    public static void editMovieObject(int i, Movie m) {
+        movies.set(i, m);
     }
 
     // prints a list of the movie titles

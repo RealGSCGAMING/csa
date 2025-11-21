@@ -94,7 +94,8 @@ public class Movie {
 
     public double getIncome() {
         if (!released) {
-            throw new IllegalStateException("Movie is unreleased");
+            return 0.0;
+            //throw new IllegalStateException("Movie is unreleased");
         }
         return income;
     }
