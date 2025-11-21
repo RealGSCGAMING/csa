@@ -2,14 +2,13 @@ import java.time.LocalDate;
 
 public class Movie {
 
+    // instance variables
     private String title;
     private String director;
     private int rating;
     private LocalDate releaseDate;
     private double income;
     private boolean released;
-
-    LocalDate tw = LocalDate.of(2005, 1, 2);
 
     // constructors
     public Movie(String t) {
@@ -59,15 +58,18 @@ public class Movie {
 
     // functional methods
 
+    // returns a formatted version of a localdate object
     public String dateToString() {
         return releaseDate.getMonthValue() + "/" + releaseDate.getDayOfMonth() + "/" + releaseDate.getYear();
     }
 
+    // generates a random localdate
     public LocalDate randomDate() {
         return LocalDate.of((int) (Math.random() * 200) + 1900, (int) (Math.random() * 11) + 1,
                 (int) (Math.random() * 29) + 1);
     }
 
+    // checks if movie is released based on current date
     public boolean checkIfReleased() {
         if (Runner.currentDate.isAfter(releaseDate))
             return true;
@@ -95,7 +97,6 @@ public class Movie {
     public double getIncome() {
         if (!released) {
             return 0.0;
-            //throw new IllegalStateException("Movie is unreleased");
         }
         return income;
     }
@@ -104,8 +105,7 @@ public class Movie {
         return released;
     }
 
-    // setters
-
+    // set methods
     public void setTitle(String title) {
         this.title = title;
     }
@@ -137,30 +137,13 @@ public class Movie {
         this.income = income;
     }
 
-    // method to mark movie as released (used when release date passes)
-
     public void markAsReleased() {
         this.released = true;
     }
 
-    // toString
-
+    // returns a formatted list of the movie's information
     public String toString() {
         return "-- " + title + " --\nDirector: " + director + "\nRelease Date: " + dateToString()
                 + "\nRotten Tomatoes Rating: " + rating + (released ? "%\nGross income: $" + income + " million" : "%");
     }
-
-    /*private int yearFromDate() {
-        return releaseDate != null ? releaseDate.getYear() : 0;
-    }*/
-
-    // main method for testing
-
-    // Output: xyz movie (year released)
-    // Director: xyz director
-    // Releaste date: xyz release date
-    // Status: true || false released
-    // Rotten Tomatoes = rating
-    // Box Office = income
-
 }

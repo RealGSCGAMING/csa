@@ -11,8 +11,7 @@ public class Runner {
 
     public static void main(String[] args) {
 
-        movies.add(new Movie("Movie 1", LocalDate.of(2010, 10, 15), "Person", 99, 8.56));
-        movies.add(new Movie("Movie 2"));
+        initialize();
 
         GUI.setup();
         GUI.configMovieList();
@@ -21,6 +20,14 @@ public class Runner {
         System.out.println("If you would like to use the console UI, type C.");
         while (!sc.nextLine().toLowerCase().equals("c"));
         console();
+    }
+
+    // initialize the tracker with some movies
+    public static void initialize() {
+        movies.add(new Movie("Template", LocalDate.of(2100, 1, 1), "Mr. Director", 100, 2.22));
+        movies.add(new Movie("Tron: Ares", LocalDate.of(2025, 10, 10), "Joachim Rønning", 71, 175));
+        movies.add(new Movie("The Running Man", LocalDate.of(2025, 11, 14), "Edgar Wright", 66, 30));
+        movies.add(new Movie("Wicked: For Good", LocalDate.of(2025, 11, 21), "Jon M. Chu", 69));
     }
 
     // runs the console UI
@@ -79,6 +86,7 @@ public class Runner {
         movies.add(m);
     }
 
+    // replace a movie object in the movies list with a new one
     public static void editMovieObject(int i, Movie m) {
         movies.set(i, m);
     }

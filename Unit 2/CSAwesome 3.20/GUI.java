@@ -320,25 +320,6 @@ public class GUI {
     listPanel.removeAll();
     listPanel.repaint();
     listPanel.revalidate();
-    /*listPanel.setLayout(new BorderLayout());
-
-    JPanel dataPanel = new JPanel(new GridLayout(Runner.movies.size() + 1, 6, 5, 5)); 
-    dataPanel.setBackground(new Color(240, 240, 240));
-
-    JPanel headerJPanel = new JPanel();
-    headerJPanel.setBackground(new Color(255, 255, 255));
-    JLabel titLabel = new JLabel("Movie Tracker");
-    titLabel.setFont(new Font("Arial", Font.BOLD, 24));
-    titLabel.setForeground(new Color(0, 102, 204));
-    headerJPanel.add(titLabel);
-    listPanel.add(titLabel);
-
-    String[] headers = {"Title", "Release Date", "Director", "Income", "Score", ""};
-    for(String header : headers ) {
-      JLabel label = new JLabel(header, SwingConstants.CENTER);
-      label.setFont(new Font("Arial", Font.BOLD, 14));
-      dataPanel.add(label);
-    }*/
 
     JLabel titLabel = new JLabel("Movie Tracker");
     titLabel.setFont(new Font("Arial", Font.BOLD, 24));
@@ -356,7 +337,7 @@ public class GUI {
       int movieIndex = i;
 
       movieButton.addActionListener(e -> {
-        info(movieIndex); //info(Runner.movies.get(movieIndex));
+        info(movieIndex);
       });
 
       listPanel.add(movieButton);
