@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="style.css">
+    <title>THE BEST WEBSITE EVET</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+
+<body>
+
+    <div class="mainContent">
+        <div class="paddedBody">
+            <div class="paddedTitle">HI WLECOME TO HTE WEBITE
+
+                <div class="paddedButton" id="button2" style="display: none;">Click here to leave</div>
+            </div>
+            <a href="https://google.com">
+                <div class="paddedButton">y</div>
+            </a>
+            <div class="paddedButton" id="gamesB">I want to play games</div>
+        </div>
+        <div class="paddedTitle">Title</div>
+        <div class="paddedBody">
+            <div class="paddedButton" id="button1">Do Not Click this button</div>
+            <p style="margin-bottom: 0px; margin-top: 5px;" id="text1">Nothing will happen if you click the button</p>
+        </div>
+
+        <button class="paddedButton" id="button3">Delete everything</button>
+
+        <footer>
+            <p>This is the best website ever created in the history of the universe. You will never find a better
+                website than this one. If you do, please let me know so I can shut it down.</p>
+        </footer>
+    </div>
+
+    <div class="mainContent" style="display: none" id="frame"> 
+        <iframe src="https://realgscgaming.github.io/rng" id="games" style="height: 800px; width: 1000px;"></iframe>
+        <div class="paddedButton" style="width: 500px;" id="glazeB">Wow this game is super cool and amazing i love it</div>
+        <div class="paddedButton" style="width: 100px;" id="antgb">I hate it.</div>
+    </div>
+</body>
+<script>
+
+    let button = document.getElementById("button1");
+    let buttonn = document.getElementById("button2");
+    let button3 = document.getElementById("button3");
+    let text = document.getElementById("text1");
+    let gamesB = document.getElementById("gamesB");
+    let frame = document.getElementById("frame");
+    let glazeB = document.getElementById("glazeB");
+    let antgb = document.getElementById("antgb");
+
+    let gba = false;
+
+
+    button.addEventListener("click", function () {
+        text.textContent = "The button is gone";
+        button.style.display = "none";
+        buttonn.style.display = "flex";
+    });
+
+    buttonn.addEventListener("click", function () {
+        window.close();
+    });
+
+    button3.addEventListener("click", function () {
+        document.body.innerHTML = "<a href=\"https://google.com\">WHaoaaaa</a>";
+    });
+
+    gamesB.addEventListener("click", function () {
+        if !gba 
+        frame.style.display = "block";
+        gamesB.textContent = "Enjoy!!!!!!!!!!!!!!!!!"
+    });
+
+    glazeB.addEventListener("click", function () {
+        alert("THanks!!!!!! ! !111!!!!!!!!!!!!!!111!!111!s")
+    });
+
+    antgb.addEventListener("click", function () {
+        frame.style.display = "none";
+        alert("I HATE YOU!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+    });
+</script>
+
+</html>
