@@ -7,7 +7,6 @@ body {
     justify-content: space-between;
     height: 100vh;
     margin: 0;
-    background: linear-gradient(90deg, #89f7fe 0%, #66a6ff 100%);
   }
   
   .mainContent {

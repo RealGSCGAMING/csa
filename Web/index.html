@@ -5,6 +5,11 @@
     <link rel="stylesheet" href="style.css">
     <title>THE BEST WEBSITE EVET</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <style>
+        body {
+            background: linear-gradient(90deg, #89f7fe 0%, #66a6ff 100%);
+        }
+    </style>
 </head>
 
 <body>
@@ -31,13 +36,15 @@
         <footer>
             <p>This is the best website ever created in the history of the universe. You will never find a better
                 website than this one. If you do, please let me know so I can shut it down.</p>
+                <a href="report.html">Report a website that is better than this one</a>
         </footer>
     </div>
 
-    <div class="mainContent" style="display: none" id="frame"> 
+    <div class="mainContent" style="display: none" id="frame">
         <iframe src="https://realgscgaming.github.io/rng" id="games" style="height: 800px; width: 1000px;"></iframe>
-        <div class="paddedButton" style="width: 500px;" id="glazeB">Wow this game is super cool and amazing i love it</div>
-        <div class="paddedButton" style="width: 100px;" id="antgb">I hate it.</div>
+        <div class="paddedButton" style="width: 500px;" id="glazeB">Wow this game is super cool and amazing i love it
+        </div>
+        <div class="paddedButton" style="width: 100px;" id="hate">I hate it.</div>
     </div>
 </body>
 <script>
@@ -49,7 +56,7 @@
     let gamesB = document.getElementById("gamesB");
     let frame = document.getElementById("frame");
     let glazeB = document.getElementById("glazeB");
-    let antgb = document.getElementById("antgb");
+    let hate = document.getElementById("hate");
 
     let gba = false;
 
@@ -69,18 +76,21 @@
     });
 
     gamesB.addEventListener("click", function () {
-        if !gba 
-        frame.style.display = "block";
-        gamesB.textContent = "Enjoy!!!!!!!!!!!!!!!!!"
+        if (!gba) {
+            frame.style.display = "block";
+            gamesB.textContent = "Enjoy!!!!!!!!!!!!!!!!!"
+            gba = true;
+        }
     });
 
     glazeB.addEventListener("click", function () {
         alert("THanks!!!!!! ! !111!!!!!!!!!!!!!!111!!111!s")
     });
 
-    antgb.addEventListener("click", function () {
+    hate.addEventListener("click", function () {
         frame.style.display = "none";
         alert("I HATE YOU!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+        gamesB.textContent = "Nope"
     });
 </script>
 

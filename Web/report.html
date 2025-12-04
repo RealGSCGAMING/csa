@@ -1,0 +1,170 @@
+<html>
+
+<head>
+    <title>Report a better website</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mainContent">
+
+        <h1>Report Form</h1>
+
+        <div id="section1">
+            <input type="text" placeholder="Your Name" style="width: 300px; height: 30px; font-size: 16px;" id="nameBox"><br>
+            <input type="text" placeholder="Website URL" style="width: 300px; height: 30px; font-size: 16px;"
+                id="url"><br>
+            <p id="warn" style="display: none;">Please enter a valid URL.</p>
+            <button class="paddedButton" id="contButton">Continue</button><br>
+        </div>
+
+        <div id="section2" style="display: none;">
+            <p>Please enter a detailed reason for your report. (Minimum 200,000 characters)</p>
+            <textarea style="width: 500px; height: 300px; font-size: 16px; border-radius: 15px;"></textarea><br>
+            <p id="charCount">Character count: 0</p>
+            <p id="warn2">Please enter more characters.</p>
+            <button class="paddedButton" id="contButton2" style="display: none;">Continue</button>
+        </div>
+
+        <div id="section3" style="display: none">
+            <div class="paddedBody">
+                <h1 id="captchaTitle">This form is protected by deCAPATACHA</h1>
+                <p>Please complete 25-factor authentication to continue.</p>
+            </div>
+            <button class="paddedButton" id="robotButton1">I'm not a robot</button>
+            <div class="paddedBody" id="nameInp" style="display: none;">
+                <p id="authMethod">Please type the word "human" to continue:</p>
+                <input type="text" style="width: 300px; height: 30px; font-size: 16px;">
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    let contButton = document.getElementById("contButton");
+    let section1 = document.getElementById("section1");
+    let section2 = document.getElementById("section2");
+    let section3 = document.getElementById("section3");
+    let urlinput = document.getElementById("url");
+    let warn = document.getElementById("warn");
+    let textarea = document.querySelector("textarea");
+    let charCount = document.getElementById("charCount");
+    let warn2 = document.getElementById("warn2");
+    let contButton2 = document.getElementById("contButton2");
+    let nameBox = document.getElementById("nameBox");
+
+    let name = "";
+
+    contButton.onclick = function () {
+
+        if (urlinput.value.includes("http://") == false && urlinput.value.includes("https://") == false) {
+            warn.style.display = "block";
+            return;
+        }
+
+        section1.style.display = "none";
+        section2.style.display = "block";
+
+        name = nameBox.value;
+    }
+
+    textarea.oninput = function () {
+        charCount.innerText = "Character count: " + textarea.value.length;
+        if (textarea.value.length >= 200000) {
+            warn2.style.display = "none";
+            contButton2.style.display = "flex";
+        } else {
+            contButton2.style.display = "none";
+            warn2.style.display = "block";
+        }
+    }
+
+    contButton2.onclick = function () {
+        section2.style.display = "none";
+        section3.style.display = "block";
+    }
+
+    let robotButton1 = document.getElementById("robotButton1");
+    let nameInp = document.getElementById("nameInp");
+    let text = document.getElementById("authMethod");
+
+    robotButton1.onclick = function () {
+        nameInp.style.display = "block";
+    }
+
+    let m = 1;
+
+    nameInp.oninput = function () {
+        let input = nameInp.querySelector("input");
+        if (input.value.toLowerCase() === "human" && m == 1) {
+            input.value = "";
+            authMethod.innerText = "Now, please type the word 'person'.";
+            m = 2;
+        }
+        if (input.value.toLowerCase() === "person" && m == 2) {
+            input.value = "";
+            authMethod.innerText = "Next, please type the word 'individual'.";
+            m = 3;
+        }
+
+        if (input.value.toLowerCase() === "individual" && m == 3) {
+            input.value = "";
+            authMethod.innerText = "Indubitably, please type the word 'being'.";
+            m = 4;
+        }
+
+        if (input.value.toLowerCase() === "being" && m == 4) {
+            input.value = "";
+            authMethod.innerText = "PleaSe TyPE onLy thE cApItaliZed lETTerS iN thIs sEnTenCE.";
+            m = 5;
+        }
+
+        if (input.value === "PSTPELEAIZETTSNIETCE" && m == 5) {
+            input.value = "";
+            authMethod.innerText = "Type the following sequence: 12345ABCDEabcde!@#$%";
+            m = 6;
+        }
+
+        if (input.value === "12345ABCDEabcde!@#$%" && m == 6) {
+            input.value = "";
+            authMethod.innerText = "Please type the answer to the following equation: What is 2 + 2?";
+            m = 7;
+        }
+
+        if (input.value === "4" && m == 7) {
+            input.value = "";
+            authMethod.innerText = "Please factor the following expression: x^2 - 5x + 6";
+            m = 8;
+        }
+
+        if (input.value.toLowerCase() === "(x-2)(x-3)" && m == 8) {
+            input.value = "";
+            document.getElementById("captchaTitle").innerText = "This form is protected by [REDACTED]";
+            authMethod.innerText = "Please enter the name of the CAPTCHA service protecting this form.";
+            m = 9;
+        }
+
+        if (input.value.toLowerCase() === "decapatacha" && m == 9) {
+            input.value = "";
+            document.getElementById("captchaTitle").innerText = "This form is protected by deCAPATACHA";
+            authMethod.innerText = "Please enter the name that you entered at the beginning of this form.";
+            m = 10;
+        }
+
+        if (input.value.toLowerCase() === name.toLowerCase() && m == 10) {
+            input.value = "";
+            authMethod.innerText = "You win, for now...";
+            input.style.display = "none"; // delete this when continuing
+            m = 11;
+        }
+    }
+
+</script>
+
+</html>
