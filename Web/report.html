@@ -14,13 +14,14 @@
 <body>
     <div class="mainContent">
 
-        <h1>Report Form</h1>
+        <h1>Form</h1>
 
         <div id="section1">
-            <input type="text" placeholder="Your Name" style="width: 300px; height: 30px; font-size: 16px;" id="nameBox"><br>
-            <input type="text" placeholder="Website URL" style="width: 300px; height: 30px; font-size: 16px;"
+            <input type="text" placeholder="Your Name" style="width: 300px; height: 30px; font-size: 16px;"
+                id="nameBox"><br>
+            <!-- <input type="text" placeholder="Website URL" style="width: 300px; height: 30px; font-size: 16px;"
                 id="url"><br>
-            <p id="warn" style="display: none;">Please enter a valid URL.</p>
+            <p id="warn" style="display: none;">Please enter a valid URL.</p> -->
             <button class="paddedButton" id="contButton">Continue</button><br>
         </div>
 
@@ -34,7 +35,7 @@
 
         <div id="section3" style="display: none">
             <div class="paddedBody">
-                <h1 id="captchaTitle">This form is protected by deCAPATACHA</h1>
+                <h1 id="captchaTitle">This form is protected by reCAPABACHA</h1>
                 <p>Please complete 25-factor authentication to continue.</p>
             </div>
             <button class="paddedButton" id="robotButton1">I'm not a robot</button>
@@ -42,6 +43,13 @@
                 <p id="authMethod">Please type the word "human" to continue:</p>
                 <input type="text" style="width: 300px; height: 30px; font-size: 16px;">
             </div>
+        </div>
+
+        <div id="section4" style="display: none;">
+            <div class="paddedTitle">
+                Congratulations, you are not a robot!
+            </div>
+            <button id="submitButton" class="paddedButton">Submit Form</button>
         </div>
     </div>
 </body>
@@ -51,8 +59,8 @@
     let section1 = document.getElementById("section1");
     let section2 = document.getElementById("section2");
     let section3 = document.getElementById("section3");
-    let urlinput = document.getElementById("url");
-    let warn = document.getElementById("warn");
+    //let urlinput = document.getElementById("url");
+    //let warn = document.getElementById("warn");
     let textarea = document.querySelector("textarea");
     let charCount = document.getElementById("charCount");
     let warn2 = document.getElementById("warn2");
@@ -63,13 +71,13 @@
 
     contButton.onclick = function () {
 
-        if (urlinput.value.includes("http://") == false && urlinput.value.includes("https://") == false) {
+        /*if (urlinput.value.includes("http://") == false && urlinput.value.includes("https://") == false) {
             warn.style.display = "block";
-            return;
-        }
+            return; 
+        }*/
 
         section1.style.display = "none";
-        section2.style.display = "block";
+        section3.style.display = "block";
 
         name = nameBox.value;
     }
@@ -99,6 +107,13 @@
     }
 
     let m = 1;
+
+    submit = document.getElementById("submitButton");
+
+    submit.onclick = function () {
+        alert("An error occured when submitting your form. Please reload the page and try again.")
+        window.location.reload();
+    }
 
     nameInp.oninput = function () {
         let input = nameInp.querySelector("input");
@@ -150,18 +165,107 @@
             m = 9;
         }
 
-        if (input.value.toLowerCase() === "decapatacha" && m == 9) {
+        if (input.value.toLowerCase() === "recapabacha" && m == 9) {
             input.value = "";
-            document.getElementById("captchaTitle").innerText = "This form is protected by deCAPATACHA";
+            document.getElementById("captchaTitle").innerText = "This form is protected by reCAPABACHA";
             authMethod.innerText = "Please enter the name that you entered at the beginning of this form.";
             m = 10;
         }
 
         if (input.value.toLowerCase() === name.toLowerCase() && m == 10) {
-            input.value = "";
-            authMethod.innerText = "You win, for now...";
-            input.style.display = "none"; // delete this when continuing
+            input.value = "ReactiveWolf";
+            authMethod.innerText = "Add the word \"Gaming\" to the end of this text";
             m = 11;
+        }
+
+        if (input.value.toLowerCase() === "reactivewolfgaming" && m == 11) {
+            authMethod.innerText = "Please remove the name of the worst youtuber of all time from the textbox to continue";
+            m = 12;
+        }
+
+        if (input.value.toLowerCase() === "" && m == 12) {
+            input.value = "";
+            document.getElementById("captchaTitle").innerText = "This form is protected by [REDACTED]";
+            authMethod.innerText = "Again, please enter the name of the CAPTCHA service protecting this form.";
+            m = 13;
+        }
+
+        if (input.value.toLowerCase() === "recapabacha" && m == 13) {
+            input.value = "";
+            document.getElementById("captchaTitle").innerText = "This form is protected by reCAPABACHA";
+            authMethod.innerText = "Type the retail price of the MSCHF Flipped Flop (do not include the dollar sign)";
+            m = 14;
+        }
+
+        if (input.value.toLowerCase() === "450" && m == 14) {
+            input.value = "";
+            authMethod.innerText = "Enter my Github username";
+            m = 15;
+        }
+
+        if (input.value.toLowerCase() === "realgscgaming" && m == 15) {
+            input.value = "";
+            authMethod.innerText = "Do you remember what the 5th question was?";
+            m = 16;
+        }
+
+        if ((input.value.toLowerCase() === "no" || input.value.toLowerCase() === "yes") && m == 16) {
+            input.value = "";
+            authMethod.innerText = "Please enter the password";
+            m = 17;
+        }
+
+        if (input.value.toLowerCase() === "the password" && m == 17) {
+            input.value = "";
+            authMethod.innerText = "Please type in the full alphabet";
+            m = 18;
+        }
+
+        if (input.value.toLowerCase() === "abcdefghijklmnopqrstuvwxyz" && m == 18) {
+            input.value = "";
+            authMethod.innerText = "Now, type the full alphabet backwards";
+            m = 19;
+        }
+
+        if (input.value.toLowerCase() === "tebahpla lluf eht" && m == 19) {
+            input.value = "";
+            authMethod.innerText = "Type the name you entered at the beginning of the form";
+            m = 20;
+        }
+
+        if (input.value.toLowerCase() === name.toLowerCase() && m == 20) {
+            input.value = "";
+            authMethod.innerText = "Type the proper spelling of the word \"refridgerator\"";
+            m = 21;
+        }
+
+        if (input.value.toLowerCase() === "refrigerator" && m == 21) {
+            input.value = "";
+            authMethod.innerText = "Please enter the 5th question";
+            m = 22;
+        }
+
+        if (input.value === "PleaSe TyPE onLy thE cApItaliZed lETTerS iN thIs sEnTenCE" && m == 22) {
+            input.value = "";
+            authMethod.innerText = "Please type only the lowercase letters in the 5th question";
+            m = 23;
+        }
+
+        if (input.value.toLowerCase() === "leaeyonythaptaliedlerithssnen" && m == 23) {
+            input.value = "";
+            authMethod.innerText = "Now enter the capital letters in the 5th question";
+            m = 24;
+        }
+
+        if (input.value === "PSTPELEAIZETTSNIETCE" && m == 24) {
+            input.value = "llllllIIIIIIlIlIlIlIlI";
+            authMethod.innerText = "Finally, please remove all the L's from this text.";
+            m = 25;
+        }
+
+        if (input.value.toLowerCase() === "iiiiiiiiiii" && m == 25) {
+            document.getElementById("section4").style.display = "block";
+            section3.style.display = "none";
         }
     }
 
