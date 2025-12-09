@@ -10,6 +10,9 @@
             font-weight: 750;
             background-color: red;
             color: white;
+            justify-self: center;
+            justify-items: center;
+            text-align: center;
         }
 
         .white-button,
@@ -53,6 +56,9 @@
 
         .text-scroll {
             animation: scroll 20s linear infinite;
+            text-wrap-mode: nowrap;
+            margin: auto;
+            color: red;
         }
 
         @keyframes scroll {
@@ -89,21 +95,30 @@
             border-style: solid;
             border-color: red;
             border-width: 2px;
-            display: grid;
-            width: 25%;
+            display: block;
+            /*width: 25%;*/
             padding: 20px;
+            justify-self: center;
+            text-align: center;
+        }
+
+        .scrollbox {
+            overflow: hidden;
         }
     </style>
 </head>
 
 <body>
+    <div class="container scrollbox">
     <p class="text-scroll" style="font-size: 2em;"> • TEST • TEST • TEST • TEST • TEST • TEST • TEST • TEST • TEST •
     </p>
+    </div>
     <button class="red-button">
         CLICK THIS
     </button>
     <input placeholder="Outer Input 1"></input>
     <div class="container">
+        <p style="font-family: monospace; color: red; font-size: 1.5em;">Please enter some text</p>
         <input placeholder="Type some text"></input>
         <input placeholder="Type some more text"></input>
         <input placeholder="Type even more text"></input>
