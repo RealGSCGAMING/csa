@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <title>Report a better website</title>
+    <title>Form</title>
     <link rel="stylesheet" href="style.css">
     <style>
         body {
@@ -35,7 +35,7 @@
 
         <div id="section3" style="display: none">
             <div class="paddedBody">
-                <h1 id="captchaTitle">This form is protected by reCAPABACHA</h1>
+                <h1 id="captchaTitle">This form is protected by reCAPATACHA</h1>
                 <p>Please complete 25-factor authentication to continue.</p>
             </div>
             <button class="paddedButton" id="robotButton1">I'm not a robot</button>
@@ -158,16 +158,16 @@
             m = 8;
         }
 
-        if (input.value.toLowerCase() === "(x-2)(x-3)" && m == 8) {
+        if ((input.value.toLowerCase() === "(x-2)(x-3)" || input.value.toLowerCase() === "(x-3)(x-2)") && m == 8) {
             input.value = "";
             document.getElementById("captchaTitle").innerText = "This form is protected by [REDACTED]";
             authMethod.innerText = "Please enter the name of the CAPTCHA service protecting this form.";
             m = 9;
         }
 
-        if (input.value.toLowerCase() === "recapabacha" && m == 9) {
+        if (input.value.toLowerCase() === "recapatacha" && m == 9) {
             input.value = "";
-            document.getElementById("captchaTitle").innerText = "This form is protected by reCAPABACHA";
+            document.getElementById("captchaTitle").innerText = "This form is protected by reCAPATACHA";
             authMethod.innerText = "Please enter the name that you entered at the beginning of this form.";
             m = 10;
         }
@@ -190,9 +190,9 @@
             m = 13;
         }
 
-        if (input.value.toLowerCase() === "recapabacha" && m == 13) {
+        if (input.value.toLowerCase() === "recapatacha" && m == 13) {
             input.value = "";
-            document.getElementById("captchaTitle").innerText = "This form is protected by reCAPABACHA";
+            document.getElementById("captchaTitle").innerText = "This form is protected by reCAPATACHA";
             authMethod.innerText = "Type the retail price of the MSCHF Flipped Flop (do not include the dollar sign)";
             m = 14;
         }

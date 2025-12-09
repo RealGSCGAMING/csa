@@ -1,0 +1,121 @@
+<html>
+
+<head>
+    <title>Test</title>
+    <link href="https://fonts.cdnfonts.com/css/helvetica-neue-lt-pro-55" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: "Helvetica Neue LT Pro", sans-serif;
+            font-weight: 750;
+            background-color: red;
+            color: white;
+        }
+
+        .white-button,
+        .red-button {
+            font-family: "Helvetica Neue LT Pro", sans-serif;
+            font-weight: 750;
+            border-width: 2px;
+            border-color: red;
+            border-style: solid;
+            font-size: 3em;
+            padding: 10px;
+            color: red;
+            background-color: white;
+            cursor: pointer;
+            text-align: center;
+            margin: 10px;
+        }
+
+        .white-button {
+            border-color: red;
+            color: red;
+            background-color: white;
+        }
+
+        .white-button:hover {
+            background-color: red;
+            color: white;
+        }
+
+        .red-button {
+            background-color: red;
+            color: white;
+            border-color: white;
+        }
+
+        .red-button:hover {
+            background-color: white;
+            color: red;
+            border-color: red;
+        }
+
+        .text-scroll {
+            animation: scroll 20s linear infinite;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(100%);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        input {
+            font-family: monospace;
+            border-style: solid;
+            border-color: red;
+            border-width: 2px;
+            font-size: 2em;
+            height: 2em;
+            background-color: white;
+            color: red;
+            display: block;
+            margin: 10px;
+            padding: 10px;
+            text-align: center;
+        }
+
+        input:focus {
+            outline: none;
+        }
+
+        .container {
+            background-color: white;
+            border-style: solid;
+            border-color: red;
+            border-width: 2px;
+            display: grid;
+            width: 25%;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <p class="text-scroll" style="font-size: 2em;"> • TEST • TEST • TEST • TEST • TEST • TEST • TEST • TEST • TEST •
+    </p>
+    <button class="red-button">
+        CLICK THIS
+    </button>
+    <input placeholder="Outer Input 1"></input>
+    <div class="container">
+        <input placeholder="Type some text"></input>
+        <input placeholder="Type some more text"></input>
+        <input placeholder="Type even more text"></input>
+        <input placeholder="Type your last text"></input>
+        <button class="red-button">SUBMIT</button>
+    </div>
+    <input placeholder="Outer Input 2"></input>
+    <button class="red-button">Big red button</button>
+    <p>CSS inspired by the 99 Percent Off Sale</p>
+</body>
+<script>
+
+</script>
+
+</html>
