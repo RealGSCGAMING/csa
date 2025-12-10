@@ -54,11 +54,17 @@
             border-color: red;
         }
 
-        .text-scroll {
+        .text-scroll,
+        .text-scroll2 {
             animation: scroll 20s linear infinite;
-            text-wrap-mode: nowrap;
+            text-wrap: nowrap;
             margin: auto;
             color: red;
+            display: inline-block;
+        }
+
+        .text-scroll2 {
+            animation-delay: -10s;
         }
 
         @keyframes scroll {
@@ -96,7 +102,6 @@
             border-color: red;
             border-width: 2px;
             display: block;
-            /*width: 25%;*/
             padding: 20px;
             justify-self: center;
             text-align: center;
@@ -104,14 +109,19 @@
 
         .scrollbox {
             overflow: hidden;
+            white-space: nowrap;
         }
     </style>
 </head>
 
 <body>
     <div class="container scrollbox">
-    <p class="text-scroll" style="font-size: 2em;"> • TEST • TEST • TEST • TEST • TEST • TEST • TEST • TEST • TEST •
-    </p>
+        <p class="text-scroll" style="font-size: 2em;"> • TEST • TEST • TEST • TEST • TEST • TEST • TEST • TEST •
+            TEST&nbsp;
+        </p>
+        <p class="text-scroll2" style="font-size: 2em;"> • TEST • TEST • TEST • TEST • TEST • TEST • TEST • TEST •
+            TEST&nbsp;
+        </p>
     </div>
     <button class="red-button">
         CLICK THIS
