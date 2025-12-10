@@ -60,7 +60,6 @@
             text-wrap: nowrap;
             margin: auto;
             color: red;
-            display: inline-block;
         }
 
         .text-scroll2 {
@@ -111,6 +110,27 @@
             overflow: hidden;
             white-space: nowrap;
         }
+
+        .marquee {
+  position: relative;
+  width: 100vw;
+  max-width: 100%;
+  height: 200px;
+  overflow-x: hidden;
+}
+
+.track {
+  position: absolute;
+  white-space: nowrap;
+  will-change: transform;
+  animation: marquee 32s linear infinite;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
     </style>
 </head>
 
@@ -123,6 +143,13 @@
             TEST&nbsp;
         </p>
     </div>
+
+    <div class="marquee">
+  <div class="track">
+    <div class="content">&nbsp;Infinite Marquee with long sentence Infinite Marquee with long sentence Infinite Marquee with long sentence Infinite Marquee with long sentence Infinite Marquee with long sentence</div>
+  </div>
+</div>
+  
     <button class="red-button">
         CLICK THIS
     </button>
