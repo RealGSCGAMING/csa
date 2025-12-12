@@ -5,6 +5,11 @@
     <link href="https://fonts.cdnfonts.com/css/helvetica-neue-lt-pro-55" rel="stylesheet">
 
     <style>
+
+        :root {
+            --scrollspeed: 30s;
+        }
+
         body {
             font-family: "Helvetica Neue LT Pro", sans-serif;
             font-weight: 750;
@@ -13,6 +18,8 @@
             justify-self: center;
             justify-items: center;
             text-align: center;
+            padding: 0;
+            margin: 0;
         }
 
         .white-button,
@@ -84,35 +91,85 @@
             text-align: center;
         }
 
-        .scrollbox {
+        .marquee,
+        .marquee2,
+        .marquee3,
+        .marquee4,
+        .marquee5 {
             display: flex;
             overflow: hidden;
-            white-space: nowrap;
-            max-width: 90vw;
+            padding: 10px 0;
         }
 
         .marquee {
             position: relative;
-            display: flex;
-            overflow: hidden;
             background: white;
             border: 2px solid red;
-            padding: 10px 0;
+            font-size: 1.5em;
+            color: red;
         }
 
-        .marquee__content {
+        .marquee2 {
+            position: fixed;
+            left: 0px;
+            height: 5px;
+            top: 0px;
+            background: rgb(255, 0, 0);
+            border: 1px solid white;
+            align-items: center;
+            z-index: 99999;
+            font-size: 0.5em;
+        }
+
+        .marquee3 {
+            position: fixed;
+            height: 5px;
+            right: 0px;
+            bottom: -27px;
+            background: rgb(255, 0, 0);
+            border: 1px solid white;
+            align-items: center;
+            z-index: 99998;
+            font-size: 0.5em;
+            transform: rotate(90deg);
+            transform-origin: top right;
+            overflow: visible;
+        }
+
+        .marquee4 {
+            position: fixed;
+            height: 5px;
+            right: 0px;
+            bottom: -27px;
+            background: rgb(255, 0, 0);
+            border: 1px solid white;
+            align-items: center;
+            z-index: 99998;
+            font-size: 0.5em;
+            transform: rotate(270deg);
+            transform-origin: top left;
+            overflow: visible;
+        }
+
+        .marquee5 {
+            position: fixed;
+            height: 5px;
+            left: 0px;
+            bottom: -0px;
+            background: rgb(255, 0, 0);
+            border: 1px solid white;
+            align-items: center;
+            z-index: 99998;
+            font-size: 0.5em;
+            overflow: visible;
+        }
+
+        .marquee-content {
             flex-shrink: 0;
             display: flex;
             font-size: 2em;
             font-weight: 950;
-        }
-
-        .upper-marquee > .marquee__content > span {
-            font-size: 0.5em;
-        }
-
-        .enable-animation .marquee__content {
-            animation: scroll 10s linear infinite;
+            animation: scroll var(--scrollspeed) linear infinite;
         }
 
         @keyframes scroll {
@@ -125,22 +182,21 @@
             }
         }
 
-        .upper-marquee {
-            position: fixed;
-            left: 0px;
-            height: 5px;
-            top: 0px;
-            display: flex;
-            overflow: hidden;
-            background: rgb(255, 0, 0);
-            border: 1px solid white;
-            padding: 10px 0;
-            align-items: center;
+        .header {
+            background-color: white;
+            color: red;
+            padding: 20px;
+            font-weight: 400;
+            font-size: 20px;
         }
 
-        .marquee > .marquee__content {
-            font-size: 2.5em;
-            color: red;
+        .header > h1 {
+            font-weight: 750;
+        }
+
+        .spacer {
+            height: 0px;
+            width: 90vw;
         }
 
     </style>
@@ -148,8 +204,16 @@
 
 <body>
 
-    <div class="upper-marquee enable-animation">
-        <div class="marquee__content">
+    <div class="spacer"></div>
+
+    <div class="header">
+        <h1>Title</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam dignissim, tellus auctor maximus pellentesque, mauris justo consequat lectus, in accumsan purus nisi vitae mi. In condimentum enim nec dolor scelerisque, volutpat condimentum massa suscipit. Maecenas aliquam leo diam, eget sodales est mattis eget. Phasellus quis lacinia sem. Ut vel ante ac ipsum vehicula tempus. In hac habitasse platea dictumst. Nunc dolor tortor, luctus nec neque quis, lacinia faucibus metus. Vestibulum mi lacus, interdum sit amet sapien ut, cursus feugiat turpis. Duis eget mollis dolor. Pellentesque dictum vel augue eu finibus. Fusce volutpat ultricies mauris vitae porta. Aenean nec commodo justo. Nulla vel mi id turpis pulvinar pulvinar. Ut quis dapibus felis. Etiam malesuada tellus a luctus viverra.</p>
+        <p>Curabitur venenatis ultrices leo, et luctus dolor consequat at. Duis egestas auctor congue. Donec non nulla est. Nullam et turpis nulla. Proin dapibus, est eu feugiat tristique, dolor quam facilisis metus, et imperdiet felis diam id urna. Morbi maximus tempor ligula, vitae dapibus lacus hendrerit a. Pellentesque posuere velit nec vestibulum facilisis. Duis eget porta libero. Phasellus vehicula urna et nibh varius placerat. Maecenas eget pharetra libero.</p>
+    </div>
+
+    <div class="marquee2">
+        <div class="marquee-content">
             <span> • TEST • TEST • TEST • TEST •
                 TEST • TEST • TEST • TEST •
                 TEST • TEST • TEST • TEST • TEST •
@@ -159,7 +223,7 @@
                 TEST&nbsp;</span>
         </div>
 
-        <div class="marquee__content">
+        <div class="marquee-content">
             <span> • TEST • TEST • TEST • TEST •
                 TEST • TEST • TEST • TEST •
                 TEST • TEST • TEST • TEST • TEST •
@@ -170,14 +234,82 @@
         </div>
     </div>
 
-   <div class="marquee enable-animation">
-        <div class="marquee__content">
+    
+
+    <div class="marquee3">
+        <div class="marquee-content">
+            <span> • TEST • TEST • TEST • TEST •
+                TEST • TEST • TEST • TEST •
+                TEST • TEST • TEST • TEST • TEST •
+                TEST • TEST • TEST • TEST •
+                TEST • TEST • TEST • TEST • TEST •
+                TEST • TEST • TEST • TEST •
+                TEST&nbsp;</span>
+        </div>
+
+        <div class="marquee-content">
+            <span> • TEST • TEST • TEST • TEST •
+                TEST • TEST • TEST • TEST •
+                TEST • TEST • TEST • TEST • TEST •
+                TEST • TEST • TEST • TEST •
+                TEST • TEST • TEST • TEST • TEST •
+                TEST • TEST • TEST • TEST •
+                TEST&nbsp;</span>
+        </div>
+    </div>
+
+    <div class="marquee4">
+        <div class="marquee-content">
+            <span> • TEST • TEST • TEST • TEST •
+                TEST • TEST • TEST • TEST •
+                TEST • TEST • TEST • TEST • TEST •
+                TEST • TEST • TEST • TEST •
+                TEST • TEST • TEST • TEST • TEST •
+                TEST • TEST • TEST • TEST •
+                TEST&nbsp;</span>
+        </div>
+
+        <div class="marquee-content">
+            <span> • TEST • TEST • TEST • TEST •
+                TEST • TEST • TEST • TEST •
+                TEST • TEST • TEST • TEST • TEST •
+                TEST • TEST • TEST • TEST •
+                TEST • TEST • TEST • TEST • TEST •
+                TEST • TEST • TEST • TEST •
+                TEST&nbsp;</span>
+        </div>
+    </div>
+
+    <div class="marquee5">
+        <div class="marquee-content">
+            <span> • TEST • TEST • TEST • TEST •
+                TEST • TEST • TEST • TEST •
+                TEST • TEST • TEST • TEST • TEST •
+                TEST • TEST • TEST • TEST •
+                TEST • TEST • TEST • TEST • TEST •
+                TEST • TEST • TEST • TEST •
+                TEST&nbsp;</span>
+        </div>
+
+        <div class="marquee-content">
+            <span> • TEST • TEST • TEST • TEST •
+                TEST • TEST • TEST • TEST •
+                TEST • TEST • TEST • TEST • TEST •
+                TEST • TEST • TEST • TEST •
+                TEST • TEST • TEST • TEST • TEST •
+                TEST • TEST • TEST • TEST •
+                TEST&nbsp;</span>
+        </div>
+    </div>
+
+    <div class="marquee">
+        <div class="marquee-content">
             <span> • TEST • TEST • TEST • TEST •
                 TEST • TEST • TEST • TEST •
                 TEST&nbsp;</span>
         </div>
 
-        <div class="marquee__content">
+        <div class="marquee-content">
             <span> • TEST • TEST • TEST • TEST •
                 TEST • TEST • TEST • TEST •
                 TEST&nbsp;</span>
@@ -199,6 +331,7 @@
     <input placeholder="Outer Input 2"></input>
     <button class="red-button">Big red button</button>
     <p>CSS inspired by the 99 Percent Off Sale</p>
+    <p>Marquee design from <a href="https://codepen.io/hexagoncircle/pen/eYMrGwW">this codepen</a></p>
 </body>
 <script>
 
