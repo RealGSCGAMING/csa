@@ -5,6 +5,7 @@ public class FlipCoins {
         Scanner sc = new Scanner(System.in);
         System.out.println("Press ENTER to flip 2,000,000 coins");
         sc.nextLine();
+        sc.close();
 
         int heads = 0;
         int tails = 0;
