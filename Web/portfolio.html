@@ -139,6 +139,12 @@
             background-color: #f0f0f0;
             padding: 20px;
             border-radius: 25px;
+            transition: transform 0.1s;
+            width: 300px;
+        }
+
+        .grg:hover {
+            transform: scale(1.05);
         }
 
         .grg>h1 {
@@ -161,24 +167,40 @@
             transform: scale(1.05);
         }
 
-        .grg > h6 {
+        .grg>h6 {
             font-weight: normal;
             margin-top: 0px;
         }
 
-        .grg > p {
+        .grg>p {
             margin-bottom: 0px;
             margin-top: 0px;
             border-radius: 25px;
             background-color: white;
             padding: 20px 40px;
             border: 2px solid black;
+            transition: transform 0.1s;
         }
 
-        .card3 {
+        .myocst {
             background-color: white;
             font-family: "Playpen Sans", sans-serif;
             padding: 20px;
+        }
+
+        .myocst > button {
+            background-color: white;
+            font-family: "Playpen Sans", sans-serif;
+            padding: 20px;
+            transition: transform 0.1s;
+            font-size: 16px;
+            max-width: 45%;
+            border-width: 4px;
+            border-style: dashed;
+        }
+
+        .myocst > button:hover {
+            transform: scale(1.05) translateY(-5px);
         }
     </style>
 </head>
@@ -223,7 +245,7 @@
         <div class="card mdc">
             <h1>The Million Dollar Challenge</h1>
             <p>Fill out a simple form, get $1,000,000. How hard could it be?</p>
-            <button>GO</button>
+            <button id="mdcButton">GO</button>
             <div class="marquee-mini">
                 <div class="marquee-content">
                     <span> • Click on this project • I know you want to click it • You could win $1,000,000 • Or maybe
@@ -243,18 +265,109 @@
 
         <div class="card grg">
             <h1>Generic RNG Game</h1>
-            <p>Click a button to unlock divs with numbers and colors. Critically acclaimed*!</p>
+            <p id="grgText">Click a button to unlock divs with numbers and colors. Critically acclaimed*!</p>
             <h6>*I played it and thought it was pretty cool</h6>
-            <button>Go</button>
+            <button id="grgButton">Roll</button>
         </div>
 
-        <div class="card card3">
-            <h1>Dont know what to put here</h1>
-            <p>Yippeee</p>
+        <div class="card myocst">
+            <h1>Mayocast</h1>
+            <p id="myocstText">My (horrible) podcast. Avaliable on all platforms.<br>(We haven't made a new episode in months)</p>
+            <button id="myocstButton1" style="background-color: mediumpurple; border-color: rebeccapurple;">Listen on Apple</button>
+            <button id="myocstButton2"style="background-color: lightgreen; border-color: green;">More Platforms</button>
+            <iframe id="myocstFrame" height="175" width="100%" title="Media player" src="https://embed.podcasts.apple.com/us/podcast/8-we-are-conspiracy/id1798002851?i=1000719584997&amp;itscg=30200&amp;itsct=podcast_box_player&amp;ls=1&amp;mttnsubad=1000719584997&amp;theme=auto" id="embedPlayer" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation" allow="autoplay *; encrypted-media *; clipboard-write" style="border: 0px; border-radius: 12px; width: 100%; height: 175px; max-width: 660px; display: none;"></iframe>
+            <button id="myocstButton3" style="display: none; justify-self: center; padding: 10px; margin-top: 10px;">Go Back</button>
         </div>
 
     </div>
 
 </body>
+
+<script>
+
+    // scripts for card 1
+    {
+        let mdcButton = document.getElementById("mdcButton")
+        mdcButton.addEventListener("click", function () {
+            let beta = confirm("This game is still a work in progress, would you like to check the beta version?");
+            if (beta) {
+                window.location.href = "form2.html"
+            }
+        })
+    }
+
+    // scripts for card 2
+    {
+        let grgButton = document.getElementById("grgButton");
+        let grgText = document.getElementById("grgText");
+        let rolls = 0;
+
+        grgButton.addEventListener("click", function () {
+
+            rolls++;
+
+            let random = Math.floor(Math.random() * 4);
+
+            if (random == 0) {
+                grgText.textContent = "Click a button to unlock divs with numbers and colors. Critically acclaimed*!";
+            }
+
+            else if (random == 1) {
+                grgText.innerHTML = "Click <a href=\"https://realgscgaming.github.io/rng\">here</a> to play.";
+            }
+
+            else if (random == 2) {
+                grgText.innerHTML = "You've clicked the button " + rolls + " times. You might as well just play the game...";
+            }
+
+            else if (random == 3) {
+                grgText.textContent = "You found the super ultra rare secret!!!!! Congratulations!!!!";
+                grgText.style.borderColor = "blue";
+                grgText.style.backgroundColor = "rgb(200, 200, 255)";
+            }
+
+            if (random != 3) {
+                grgText.style.borderColor = "black";
+                grgText.style.backgroundColor = "white";
+            }
+
+            grgText.style.transform = "scale(1.1)";
+            setTimeout(() => {
+                grgText.style.transform = 'scale(1)';
+            }, 100);
+
+        });
+    }
+
+    // scripts for card 3
+    {
+        let myocstButton1 = document.getElementById("myocstButton1");
+        let myocstButton2 = document.getElementById("myocstButton2");
+        let myocstButton3 = document.getElementById("myocstButton3");
+        let myocstFrame = document.getElementById("myocstFrame");
+        let myocstText = document.getElementById("myocstText");
+
+        myocstButton1.addEventListener("click", function() {
+            myocstText.style.display = "none";
+            myocstButton1.style.display = "none";
+            myocstButton2.style.display = "none";
+            myocstFrame.style.display = "block";
+            myocstButton3.style.display = "block";
+        });
+
+        myocstButton2.addEventListener("click", function() {
+            window.location.href = "https://realgscgaming.github.io/mayocast/platforms"
+        });
+
+        myocstButton3.addEventListener("click", function() {
+            myocstText.style.display = "block";
+            myocstButton1.style.display = "block";
+            myocstButton2.style.display = "block";
+            myocstFrame.style.display = "none";
+            myocstButton3.style.display = "none";
+        });
+    }
+
+</script>
 
 </html>
