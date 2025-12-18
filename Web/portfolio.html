@@ -2,8 +2,16 @@
 <html>
 
 <head>
+
+    <!-- FONTS -->
     <link href="https://fonts.cdnfonts.com/css/helvetica-neue-lt-pro-55" rel="stylesheet">
     <link href="https://fonts.cdnfonts.com/css/playpen-sans" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/trial-rooftop" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/chelsea-market" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/comfortaa-3" rel="stylesheet">
+
+    <title>Portfolio</title>
+
     <style>
         :root {
             --scrollspeed: 120s;
@@ -183,13 +191,24 @@
         }
 
         .myocst {
-            background-color: white;
+            background-color: lightgoldenrodyellow;
             font-family: "Playpen Sans", sans-serif;
             padding: 20px;
+            transition: background-color 1s, border-color 1s;
+            border: 2px solid black;
         }
 
-        .myocst > button {
-            background-color: white;
+        .myocst>h1 {
+            background-color: goldenrod;
+            margin-left: -20px;
+            margin-right: -20px;
+        }
+
+        .myocst>p {
+            margin-bottom: 10px;
+        }
+
+        .myocst>button {
             font-family: "Playpen Sans", sans-serif;
             padding: 20px;
             transition: transform 0.1s;
@@ -197,10 +216,82 @@
             max-width: 45%;
             border-width: 4px;
             border-style: dashed;
+            display: initial;
         }
 
-        .myocst > button:hover {
+        .myocst>button:hover {
             transform: scale(1.05) translateY(-5px);
+        }
+
+        .ben {
+            background-color: white;
+            padding: 20px;
+            font-family: "TRIAL Rooftop", sans-serif;
+            font-weight: 300;
+            background-color: burlywood;
+            border-radius: 100px;
+        }
+
+        .ben>h1 {
+            font-weight: 400;
+        }
+
+        .ben>button {
+            font-family: "TRIAL Rooftop", sans-serif;
+            background-color: brown;
+            color: white;
+            padding: 20px;
+            font-size: 20px;
+            margin: 5px;
+            border: 2px dotted beige;
+            transition: transform 0.1s;
+        }
+
+        .ben>button:hover {
+            transform: scale(0.95)
+        }
+
+        .ben>button:active {
+            transform: scale(1.1);
+        }
+
+        .ben>.benOverlay {
+            position: absolute;
+            z-index: 10;
+            left: 0;
+            bottom: 0;
+            background-color: saddlebrown;
+            color: white;
+            align-content: center;
+            padding: 20px;
+            align-self: center;
+            justify-self: center;
+            opacity: 0%;
+            display: none;
+            transition: opacity 0.5s;
+            border-radius: 100px;
+        }
+
+        .ffn {
+            font-family: 'Comfortaa', sans-serif;
+            background-color: #f1e1dd;
+            color: #1c1c1c;
+            padding: 20px;
+        }
+
+        .ffn > h1 {
+            font-family: 'Chelsea Market', sans-serif;
+            color: #734332;
+        }
+
+        .ffn > button {
+            font-family: 'Comfortaa', sans-serif;
+            background-color: #734332;
+            color: white;
+            padding: 20px;
+            border-style: none;
+            border-radius: 10px;
+            font-size: 20px;
         }
     </style>
 </head>
@@ -270,13 +361,37 @@
             <button id="grgButton">Roll</button>
         </div>
 
-        <div class="card myocst">
+        <div class="card myocst" id="myocstCard">
             <h1>Mayocast</h1>
-            <p id="myocstText">My (horrible) podcast. Avaliable on all platforms.<br>(We haven't made a new episode in months)</p>
-            <button id="myocstButton1" style="background-color: mediumpurple; border-color: rebeccapurple;">Listen on Apple</button>
-            <button id="myocstButton2"style="background-color: lightgreen; border-color: green;">More Platforms</button>
-            <iframe id="myocstFrame" height="175" width="100%" title="Media player" src="https://embed.podcasts.apple.com/us/podcast/8-we-are-conspiracy/id1798002851?i=1000719584997&amp;itscg=30200&amp;itsct=podcast_box_player&amp;ls=1&amp;mttnsubad=1000719584997&amp;theme=auto" id="embedPlayer" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation" allow="autoplay *; encrypted-media *; clipboard-write" style="border: 0px; border-radius: 12px; width: 100%; height: 175px; max-width: 660px; display: none;"></iframe>
-            <button id="myocstButton3" style="display: none; justify-self: center; padding: 10px; margin-top: 10px;">Go Back</button>
+            <p id="myocstText">My (horrible) podcast. Avaliable on all platforms.<br>(We haven't made a new episode in
+                months)</p>
+            <button id="myocstButton1" style="background-color: mediumpurple; border-color: rebeccapurple;">Listen on
+                Apple</button>
+            <button id="myocstButton2" style="background-color: lightgreen; border-color: green;">More
+                Platforms</button>
+            <iframe id="myocstFrame" height="175" width="100%" title="Media player"
+                src="https://embed.podcasts.apple.com/us/podcast/8-we-are-conspiracy/id1798002851?i=1000719584997&amp;itscg=30200&amp;itsct=podcast_box_player&amp;ls=1&amp;mttnsubad=1000719584997&amp;theme=auto"
+                id="embedPlayer"
+                sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation"
+                allow="autoplay *; encrypted-media *; clipboard-write"
+                style="border: 0px; border-radius: 12px; width: 100%; height: 175px; max-width: 660px; display: none; margin-top: -5px;"></iframe>
+            <button id="myocstButton3" style="display: none; justify-self: center; padding: 10px; margin-top: 5px;">Go
+                Back</button>
+        </div>
+
+        <div class="card ben">
+            <h1>Ben Bot</h1>
+            <p>A Talking Ben discord bot. Perfect for servers that just aren't annoying enough yet.</p>
+            <button id="benButton1">Hear a Sample</button>
+            <button id="benButton2">Get it Now</button>
+            <div class="benOverlay" id="benOverlay" aria-hidden="true">Make sure to turn on your audio to hear the
+                sample!</div>
+        </div>
+
+        <div class="card ffn">
+            <h1>Fast Food News</h1>
+            <p>Lorem ipsum</p>
+            <button>Read</button>
         </div>
 
     </div>
@@ -291,7 +406,7 @@
         mdcButton.addEventListener("click", function () {
             let beta = confirm("This game is still a work in progress, would you like to check the beta version?");
             if (beta) {
-                window.location.href = "form2.html"
+                window.open("form2.html", "_blank")
             }
         })
     }
@@ -300,24 +415,33 @@
     {
         let grgButton = document.getElementById("grgButton");
         let grgText = document.getElementById("grgText");
-        let rolls = 0;
+        let grgRolls = 0;
 
         grgButton.addEventListener("click", function () {
 
-            rolls++;
+            grgRolls++;
 
             let random = Math.floor(Math.random() * 4);
+
+            if (grgRolls == 1) {
+                random = 1;
+            }
 
             if (random == 0) {
                 grgText.textContent = "Click a button to unlock divs with numbers and colors. Critically acclaimed*!";
             }
 
             else if (random == 1) {
-                grgText.innerHTML = "Click <a href=\"https://realgscgaming.github.io/rng\">here</a> to play.";
+                grgText.innerHTML = "Click <a href=\"https://realgscgaming.github.io/rng\" target=\"_blank\">here</a> to play.";
             }
 
             else if (random == 2) {
-                grgText.innerHTML = "You've clicked the button " + rolls + " times. You might as well just play the game...";
+                if (grgRolls > 10) {
+                    grgText.innerHTML = "You've clicked the button " + grgRolls + " times. You might as well just play the game...";
+                }
+                else {
+                    grgText.innerHTML = "You've clicked the button " + grgRolls + " times."
+                }
             }
 
             else if (random == 3) {
@@ -341,33 +465,98 @@
 
     // scripts for card 3
     {
+        let myocstCard = document.getElementById("myocstCard")
         let myocstButton1 = document.getElementById("myocstButton1");
         let myocstButton2 = document.getElementById("myocstButton2");
         let myocstButton3 = document.getElementById("myocstButton3");
         let myocstFrame = document.getElementById("myocstFrame");
         let myocstText = document.getElementById("myocstText");
 
-        myocstButton1.addEventListener("click", function() {
+        myocstButton1.addEventListener("click", function () {
             myocstText.style.display = "none";
             myocstButton1.style.display = "none";
             myocstButton2.style.display = "none";
-            myocstFrame.style.display = "block";
-            myocstButton3.style.display = "block";
+            myocstFrame.style.display = "";
+            myocstButton3.style.display = "";
+            myocstCard.style.backgroundColor = "#1c1c1e";
+            myocstCard.style.borderColor = "lightgoldenrodyellow";
         });
 
-        myocstButton2.addEventListener("click", function() {
-            window.location.href = "https://realgscgaming.github.io/mayocast/platforms"
+        myocstButton2.addEventListener("click", function () {
+            window.open("https://realgscgaming.github.io/mayocast/platforms", "_blank")
         });
 
-        myocstButton3.addEventListener("click", function() {
-            myocstText.style.display = "block";
-            myocstButton1.style.display = "block";
-            myocstButton2.style.display = "block";
+        myocstButton3.addEventListener("click", function () {
+            myocstText.style.display = "";
+            myocstButton1.style.display = "";
+            myocstButton2.style.display = "";
             myocstFrame.style.display = "none";
             myocstButton3.style.display = "none";
+            myocstCard.style.backgroundColor = "lightgoldenrodyellow";
+            myocstCard.style.borderColor = "black";
         });
     }
 
+    // scripts for card 4
+    {
+        let benButton1 = document.getElementById("benButton1");
+        let benButton2 = document.getElementById("benButton2");
+        let benOverlay = document.getElementById("benOverlay");
+        let benOverlayShown = false;
+        let benPlayingSound = false;
+
+        benButton1.addEventListener("click", function () {
+
+            if (!benPlayingSound) {
+                benPlayingSound = true;
+
+                let random = Math.floor(Math.random() * 4);
+                let baseUrl = "https://realgscgaming.github.io/talking-ben/Sounds/";
+                let audio;
+
+                if (random == 0) {
+                    audio = new Audio(baseUrl + "Yes.mp3");
+                }
+                else if (random == 1) {
+                    audio = new Audio(baseUrl + "No.mp3");
+                }
+                else if (random == 2) {
+                    audio = new Audio(baseUrl + "Laugh.mp3");
+                }
+                else if (random == 3) {
+                    audio = new Audio(baseUrl + "Ugh.mp3");
+                }
+
+                if (!benOverlayShown) {
+                    benOverlayShown = true;
+                    benOverlay.style.display = "block";
+
+                    setTimeout(() => {
+                            benOverlay.style.opacity = "100%";
+                        }, 1);
+
+                    setTimeout(() => {
+                        benOverlay.style.opacity = "0%";
+
+                        setTimeout(() => {
+                            benOverlay.style.display = "none";
+                        }, 300);
+
+                    }, 3000);
+                }
+
+                audio.play();
+
+                setTimeout(() => {
+                    benPlayingSound = false;
+                }, 2000);
+            }
+        });
+
+        benButton2.addEventListener("click", function () {
+            window.open("https://realgscgaming.github.io/talking-ben", "_blank");
+        });
+    }
 </script>
 
 </html>
