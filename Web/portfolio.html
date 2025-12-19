@@ -277,6 +277,7 @@
             background-color: #f1e1dd;
             color: #1c1c1c;
             padding: 20px;
+            align-content: center;
         }
 
         .ffn>h1 {
@@ -292,6 +293,20 @@
             border-style: none;
             border-radius: 10px;
             font-size: 20px;
+            transition: background-color 0.1s, box-shadow 0.1s, transform 0.1s;
+        }
+
+        .ffn>button:hover {
+            background-color: #583427;
+            box-shadow: 1px 1px 5px black;
+        }
+
+        .ffn>button:active {
+            transform: scale(1.1);
+        }
+
+        .ffn>img {
+            width: 100px;
         }
     </style>
 </head>
@@ -389,9 +404,10 @@
         </div>
 
         <div class="card ffn">
+            <img src="https://lh3.googleusercontent.com/sitesv/AAzXCkeXkJZUHRPsObhLz4nvUSZNTQ4QeEQ19r6RWT5ShgyNOX9mHsJ0VVPNZQsDjTa2pIOC4c2AxBaFGuRAH13inbtyEbm4U6naiPo_6UAskTHnhvc-3L997HE9MvcNl_HAZGZEpPW4T22-Re_EPWF1hHcya5xyJISc7hhmFffuNPYh7voufMFAuUrfJZyBb5wEE5BVYEEEC9pfrBwoF33YKQ">
             <h1>Fast Food News</h1>
-            <p>Lorem ipsum</p>
-            <button>Read</button>
+            <p>The most trustworthy news source of all time!</p>
+            <button id="ffnButton">Read</button>
         </div>
 
     </div>
@@ -555,6 +571,15 @@
 
         benButton2.addEventListener("click", function () {
             window.open("https://realgscgaming.github.io/talking-ben", "_blank");
+        });
+    }
+
+    // scripts for card 5
+    {
+        let ffnButton = document.getElementById("ffnButton");
+
+        ffnButton.addEventListener("click", function() {
+            window.open("https://sites.google.com/view/fastfoodnews");
         });
     }
 </script>
