@@ -81,11 +81,11 @@
 
         .container {
             background-color: white;
-            display: block;
             padding: 20px;
-            justify-self: center;
             text-align: center;
-            max-width: 75vw;
+            justify-self: center;
+            width: 75vw;
+            margin: auto;
         }
 
         .section-title {
@@ -107,7 +107,7 @@
         .card {
             margin: 20px;
             position: relative;
-            max-width: 300px;
+            width: 300px;
             padding: 10px;
         }
 
@@ -308,6 +308,68 @@
         .ffn>img {
             width: 100px;
         }
+
+        .yt {
+            padding: 20px;
+            background-color: whitesmoke;
+            border: 4px dashed red;
+            align-content: center;
+        }
+
+        .yt:hover {
+            border: 4px solid red;
+        }
+
+        .yt>button {
+            padding: 20px;
+            border: 2px dotted black;
+            font-size: 20px;
+            background-color: lightgoldenrodyellow;
+            transition: background-color 0.1s;
+        }
+
+        .yt>button:hover {
+            border: 2px solid black;
+            background-color: gold;
+        }
+
+        .footer {
+            color: black;
+            background-color: white;
+            padding: 20px;
+            transition: background-color 0.2s;
+        }
+
+        .footer:hover {
+            background-color: lightgreen;
+        }
+
+        .footerLinks {
+            position: relative;
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .footerIcon, .footerText {
+            width: 100px;
+            height: 100px;
+            margin: 20px;
+            position: relative;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .footerIcon:hover {
+            transform: scale(1.1) translateY(-10px);
+        }
+
+        .footerText {
+            background-color: black;
+            align-content: center;
+            color: white;
+            padding: 10px;
+        }
     </style>
 </head>
 
@@ -346,21 +408,21 @@
         </div>
     </div>
 
-    <div class="cardsbox">
+    <div class="cardsbox" id="cardsBox">
 
         <div class="card mdc">
             <h1>The Million Dollar Challenge</h1>
             <p>Fill out a simple form, get $1,000,000. How hard could it be?</p>
             <button id="mdcButton">GO</button>
             <div class="marquee-mini">
-                <div class="marquee-content">
+                <div class="marquee-content" aria-hidden="true">
                     <span> • Click on this project • I know you want to click it • You could win $1,000,000 • Or maybe
                         not •
                         You'll never know until you try • Click the button • Go go go • This is the best
                         project&nbsp;</span>
                 </div>
 
-                <div class="marquee-content">
+                <div class="marquee-content" aria-hidden="true">
                     <span> • Click on this project • I know you want to click it • You could win $1,000,000 • Or maybe
                         not •
                         You'll never know until you try • Click the button • Go go go • This is the best
@@ -410,11 +472,39 @@
             <button id="ffnButton">Read</button>
         </div>
 
+        <div class="card yt">
+            <h1>The Banana Man Youtube Channel</h1>
+            <p>I record, edit, and upload mostly tutorials for random things.</p>
+            <button id="ytButton">Watch</button>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        <h1>Find me on</h1>
+        <div class="footerLinks">
+            <div class="footerIcon footerText">YouTube Logo</div>
+            <div class="footerIcon footerText">Discord Logo</div>
+            <div class="footerIcon footerText">GitHub Logo</div>
+            <div class="footerIcon footerText">Cheeser Inc Logo</div>
+            <div class="footerIcon footerText">Banana Man Image</div>
+        </div>
     </div>
 
 </body>
 
 <script>
+
+    // randomize card order (currently disabled)
+    /*
+    let cardsBox = document.getElementById("cardsBox");
+
+    let items = document.querySelectorAll("#cardsBox > *");
+
+    items.forEach(item => {
+        item.style.order = Math.floor(Math.random() * 100);
+    });
+    */
 
     // scripts for card 1
     {
@@ -579,7 +669,16 @@
         let ffnButton = document.getElementById("ffnButton");
 
         ffnButton.addEventListener("click", function() {
-            window.open("https://sites.google.com/view/fastfoodnews");
+            window.open("https://sites.google.com/view/fastfoodnews", "_blank");
+        });
+    }
+
+    // scripts for card 6
+    {
+        let ytButton = document.getElementById("ytButton");
+
+        ytButton.addEventListener("click", function() {
+            window.open("https://youtube.com/@ggscgaming", "_blank")
         });
     }
 </script>
