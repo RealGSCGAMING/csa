@@ -6,7 +6,7 @@
 
     <style>
         :root {
-            --scrollspeed: 30s;
+            --scrollspeed: 60s;
         }
 
         body {
@@ -19,6 +19,9 @@
             text-align: center;
             padding: 0;
             margin: 0;
+            display: flex;
+            flex-flow: column nowrap;
+            align-items: center;
         }
 
         .white-button,
@@ -62,9 +65,7 @@
 
         input {
             font-family: monospace;
-            border-style: solid;
-            border-color: red;
-            border-width: 2px;
+            border: 2px solid red;
             font-size: 2em;
             height: 2em;
             background-color: white;
@@ -80,21 +81,21 @@
         }
 
         .container {
+            display: flex;
+            flex-flow: column nowrap;
             background-color: white;
-            border-style: solid;
-            border-color: red;
-            border-width: 2px;
-            display: block;
+            border: 2px solid red;
             padding: 20px;
             justify-self: center;
+            justify-content: center;
             text-align: center;
+            gap: 0px;
+            width: 500px;
+            margin: auto;
         }
 
         .marquee,
-        .marquee2,
-        .marquee3,
-        .marquee4,
-        .marquee5 {
+        .marquee-mini {
             display: flex;
             overflow: hidden;
             padding: 10px 0;
@@ -106,9 +107,11 @@
             border: 2px solid red;
             font-size: 1.5em;
             color: red;
+            border-left: none;
+            border-right: none;
         }
 
-        .marquee2 {
+        .marquee-mini {
             position: fixed;
             left: 0px;
             height: 5px;
@@ -118,49 +121,6 @@
             align-items: center;
             z-index: 99999;
             font-size: 0.5em;
-        }
-
-        .marquee3 {
-            position: fixed;
-            height: 5px;
-            right: 0px;
-            bottom: -27px;
-            background: rgb(255, 0, 0);
-            border: 1px solid white;
-            align-items: center;
-            z-index: 99998;
-            font-size: 0.5em;
-            transform: rotate(90deg);
-            transform-origin: top right;
-            overflow: visible;
-        }
-
-        .marquee4 {
-            position: fixed;
-            height: 5px;
-            right: 0px;
-            bottom: -27px;
-            background: rgb(255, 0, 0);
-            border: 1px solid white;
-            align-items: center;
-            z-index: 99998;
-            font-size: 0.5em;
-            transform: rotate(270deg);
-            transform-origin: top left;
-            overflow: visible;
-        }
-
-        .marquee5 {
-            position: fixed;
-            height: 5px;
-            left: 0px;
-            bottom: -0px;
-            background: rgb(255, 0, 0);
-            border: 1px solid white;
-            align-items: center;
-            z-index: 99998;
-            font-size: 0.5em;
-            overflow: visible;
         }
 
         .marquee-content {
@@ -182,30 +142,44 @@
         }
 
         .header {
+            display: flex;
+            flex-flow: column nowrap;
             background-color: white;
             color: red;
             padding: 20px;
             font-weight: 400;
             font-size: 20px;
+            justify-content: center;
+            text-align: center;
+            align-content: center;
+            align-items: center;
         }
 
         .header>h1 {
             font-weight: 750;
         }
 
-        .spacer {
-            height: 0px;
-            width: 90vw;
+        a {
+            color: white;
+        }
+
+        .formTitle {
+            font-weight: 750;
+            font-size: 50px;
+        }
+
+        .monoFont {
+            font-family: monospace;
+            color: red;
+            font-size: 1.5em;
         }
     </style>
 </head>
 
 <body>
 
-    <div class="spacer"></div>
-
     <div class="header">
-        <h1>Title</h1>
+        <h1>Title Graphic Goes Here</h1>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam dignissim, tellus auctor maximus pellentesque,
             mauris justo consequat lectus, in accumsan purus nisi vitae mi. In condimentum enim nec dolor scelerisque,
             volutpat condimentum massa suscipit. Maecenas aliquam leo diam, eget sodales est mattis eget. Phasellus quis
@@ -221,75 +195,7 @@
             placerat. Maecenas eget pharetra libero.</p>
     </div>
 
-    <div class="marquee2">
-        <div class="marquee-content">
-            <span> • TEST • TEST • TEST • TEST •
-                TEST • TEST • TEST • TEST •
-                TEST • TEST • TEST • TEST • TEST •
-                TEST • TEST • TEST • TEST •
-                TEST • TEST • TEST • TEST • TEST •
-                TEST • TEST • TEST • TEST •
-                TEST&nbsp;</span>
-        </div>
-
-        <div class="marquee-content">
-            <span> • TEST • TEST • TEST • TEST •
-                TEST • TEST • TEST • TEST •
-                TEST • TEST • TEST • TEST • TEST •
-                TEST • TEST • TEST • TEST •
-                TEST • TEST • TEST • TEST • TEST •
-                TEST • TEST • TEST • TEST •
-                TEST&nbsp;</span>
-        </div>
-    </div>
-
-
-
-    <div class="marquee3">
-        <div class="marquee-content">
-            <span> • TEST • TEST • TEST • TEST •
-                TEST • TEST • TEST • TEST •
-                TEST • TEST • TEST • TEST • TEST •
-                TEST • TEST • TEST • TEST •
-                TEST • TEST • TEST • TEST • TEST •
-                TEST • TEST • TEST • TEST •
-                TEST&nbsp;</span>
-        </div>
-
-        <div class="marquee-content">
-            <span> • TEST • TEST • TEST • TEST •
-                TEST • TEST • TEST • TEST •
-                TEST • TEST • TEST • TEST • TEST •
-                TEST • TEST • TEST • TEST •
-                TEST • TEST • TEST • TEST • TEST •
-                TEST • TEST • TEST • TEST •
-                TEST&nbsp;</span>
-        </div>
-    </div>
-
-    <div class="marquee4">
-        <div class="marquee-content">
-            <span> • TEST • TEST • TEST • TEST •
-                TEST • TEST • TEST • TEST •
-                TEST • TEST • TEST • TEST • TEST •
-                TEST • TEST • TEST • TEST •
-                TEST • TEST • TEST • TEST • TEST •
-                TEST • TEST • TEST • TEST •
-                TEST&nbsp;</span>
-        </div>
-
-        <div class="marquee-content">
-            <span> • TEST • TEST • TEST • TEST •
-                TEST • TEST • TEST • TEST •
-                TEST • TEST • TEST • TEST • TEST •
-                TEST • TEST • TEST • TEST •
-                TEST • TEST • TEST • TEST • TEST •
-                TEST • TEST • TEST • TEST •
-                TEST&nbsp;</span>
-        </div>
-    </div>
-
-    <div class="marquee5">
+    <div class="marquee-mini">
         <div class="marquee-content">
             <span> • TEST • TEST • TEST • TEST •
                 TEST • TEST • TEST • TEST •
@@ -325,25 +231,23 @@
         </div>
     </div>
 
-    <button class="red-button">
-        CLICK THIS
-    </button>
-    <input placeholder="Outer Input 1"></input>
+    <h1 class="formTitle">Claim Form</h1>
     <div class="container">
-        <p style="font-family: monospace; color: red; font-size: 1.5em;">Please enter some text</p>
-        <input placeholder="Type some text"></input>
-        <input placeholder="Type some more text"></input>
-        <input placeholder="Type even more text"></input>
-        <input placeholder="Type your last text"></input>
-        <button class="red-button" onclick="alert('Your input has been sent into the void')">SUBMIT</button>
+        <p class="monoFont">Tell us about yourself</p>
+        <input placeholder="Name"></input>
+        <input placeholder="How can we contact you?"></input>
+        <button class="red-button" onclick="alert('Your input has been sent into the void')">CONTINUE</button>
     </div>
-    <input placeholder="Outer Input 2"></input>
-    <button class="red-button">Big red button</button>
-    <p>CSS inspired by the 99 Percent Off Sale</p>
-    <p>Marquee design from <a href="https://codepen.io/hexagoncircle/pen/eYMrGwW">this codepen</a></p>
+    <p>Design inspired by the <a href="https://99percentoffsale.com" target="_blank">99 Percent Off Sale</a></p>
+    <p>Marquee design from <a href="https://codepen.io/hexagoncircle/pen/eYMrGwW" target="_blank">this codepen</a></p>
 </body>
 <script>
 
+
+
+    function setCookie() {
+        
+    }
 </script>
 
 </html>
