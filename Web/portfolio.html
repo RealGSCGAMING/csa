@@ -10,7 +10,8 @@
     <link href="https://fonts.cdnfonts.com/css/chelsea-market" rel="stylesheet">
     <link href="https://fonts.cdnfonts.com/css/comfortaa-3" rel="stylesheet">
 
-    <title>Portfolio</title>
+    <title>banana man</title>
+    <link rel="icon" href="Resources/favicon.ico">
 
     <style>
         :root {
@@ -337,11 +338,12 @@
             color: black;
             background-color: white;
             padding: 20px;
-            transition: background-color 0.2s;
+            transition: background-color 0.2s, text-shadow 0.2s;
         }
 
         .footer:hover {
             background-color: lightgreen;
+            text-shadow: 2px 2px gray;
         }
 
         .footerLinks {
@@ -360,6 +362,11 @@
             transition: transform 0.2s;
         }
 
+        .footerIcon>img {
+            width: 100%;
+            height: 100%;
+        }
+
         .footerIcon:hover {
             transform: scale(1.1) translateY(-10px);
         }
@@ -376,21 +383,16 @@
 <body>
 
     <div class="section-title">
-        <h1>Welcome to the website</h1>
+        <h1>banana man's portfolio</h1>
     </div>
 
     <div class="container">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam diam neque, facilisis ac vehicula id,
-            egestas quis nisl. Nam vestibulum metus non feugiat porta. Vivamus sed sapien non nisi tempor ultrices at in
-            sem. Morbi quis rhoncus nibh, sed dictum ipsum. Suspendisse at interdum eros. Praesent dolor quam, finibus
-            eget risus id, pulvinar auctor mi. Quisque in interdum elit.
-
-            Donec auctor euismod magna, ut consequat orci pharetra eget. Nullam vehicula ex et purus malesuada, id
-            suscipit sapien varius. Sed elementum at lorem vel cursus. Maecenas vel mauris non mauris placerat euismod.
-            Nullam porttitor quam odio, et lobortis felis tincidunt facilisis. Donec semper turpis quis ipsum pharetra
-            varius. In malesuada diam vitae leo ultrices, nec sagittis ante ultrices. Etiam faucibus turpis dolor, at
-            mollis leo iaculis sit amet. Duis vitae massa quis sapien consectetur aliquam. Praesent sed orci sit amet
-            nibh fermentum sagittis. Morbi rutrum erat libero, ut condimentum mauris maximus non.
+        <p>
+            Welcome to my portfolio!<br>
+            My name is Gavin, but you may know me as banana man or Meanbox.<br>
+            I enjoy frontend web development with HTML, CSS, and JS, and I'm also learning Java and Python.<br>
+            Below you'll find some of the projects I've worked on over the years. Some of them are better than others.<br>
+            Enjoy! :)
         </p>
     </div>
 
@@ -466,7 +468,7 @@
         </div>
 
         <div class="card ffn">
-            <img src="https://lh3.googleusercontent.com/sitesv/AAzXCkeXkJZUHRPsObhLz4nvUSZNTQ4QeEQ19r6RWT5ShgyNOX9mHsJ0VVPNZQsDjTa2pIOC4c2AxBaFGuRAH13inbtyEbm4U6naiPo_6UAskTHnhvc-3L997HE9MvcNl_HAZGZEpPW4T22-Re_EPWF1hHcya5xyJISc7hhmFffuNPYh7voufMFAuUrfJZyBb5wEE5BVYEEEC9pfrBwoF33YKQ">
+            <img src="Resources/ffn.png">
             <h1>Fast Food News</h1>
             <p>The most trustworthy news source of all time!</p>
             <button id="ffnButton">Read</button>
@@ -483,11 +485,12 @@
     <div class="footer">
         <h1>Find me on</h1>
         <div class="footerLinks">
-            <div class="footerIcon footerText">YouTube Logo</div>
-            <div class="footerIcon footerText">Discord Logo</div>
-            <div class="footerIcon footerText">GitHub Logo</div>
-            <div class="footerIcon footerText">Cheeser Inc Logo</div>
-            <div class="footerIcon footerText">Banana Man Image</div>
+            <a href="https://youtube.com/@ggscgaming" target="_blank" class="footerIcon"><img src="Resources/youtube.png" alt="YouTube"></a>
+            <a href="https://discord.gg/zwAtCNF5QD" target="_blank" class="footerIcon"><img src="Resources/discord.png" alt="Discord"></a>
+            <a href="https://github.com/RealGSCGAMING" target="_blank" class="footerIcon"><img src="Resources/github.png" alt="Github"></a>
+            <a href="https://open.spotify.com/show/7HcSbiOJyyJJVJtTBw0m6L" target="_blank" class="footerIcon"><img src="Resources/spotify.png" alt="Spotify"></a>
+            <a href="https://cheeserinc.com" target="_blank" class="footerIcon"><img src="Resources/cheeser.png" alt="Cheeser Inc"></a>
+            <a href="" class="footerIcon"><img src="Resources/banana.png" alt="Banana Man"></a>
         </div>
     </div>
 
