@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "DogArray",
+            "request": "launch",
+            "mainClass": "DogArray",
+            "projectName": "CSA_50a692bb"
+        },
+        {
+            "type": "java",
+            "name": "Partners",
+            "request": "launch",
+            "mainClass": "Partners",
+            "projectName": "CSA_50a692bb"
+        },
+        {
+            "type": "java",
             "name": "t",
             "request": "launch",
             "mainClass": "t",
