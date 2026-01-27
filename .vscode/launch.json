@@ -6,6 +6,48 @@
     "configurations": [
         {
             "type": "java",
+            "name": "PetSimulator",
+            "request": "launch",
+            "mainClass": "PetSimulator.PetSimulator",
+            "projectName": "CSA_50a692bb"
+        },
+        {
+            "type": "java",
+            "name": "PetSimulator",
+            "request": "launch",
+            "mainClass": "PetSimulator",
+            "projectName": "CSA_50a692bb"
+        },
+        {
+            "type": "java",
+            "name": "TraversalAlgorithmsWhile",
+            "request": "launch",
+            "mainClass": "TraversalAlgorithmsWhile",
+            "projectName": "CSA_50a692bb"
+        },
+        {
+            "type": "java",
+            "name": "TraversalAlgorithmsFor",
+            "request": "launch",
+            "mainClass": "TraversalAlgorithmsFor",
+            "projectName": "CSA_50a692bb"
+        },
+        {
+            "type": "java",
+            "name": "Whatever",
+            "request": "launch",
+            "mainClass": "Whatever",
+            "projectName": "CSA_50a692bb"
+        },
+        {
+            "type": "java",
+            "name": "Minesweeper",
+            "request": "launch",
+            "mainClass": "Minesweeper",
+            "projectName": "CSA_50a692bb"
+        },
+        {
+            "type": "java",
             "name": "DogArray",
             "request": "launch",
             "mainClass": "DogArray",
