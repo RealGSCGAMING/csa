@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "RandomPermRunner",
+            "request": "launch",
+            "mainClass": "RandomPermutation.RandomPermRunner",
+            "projectName": "CSA_50a692bb"
+        },
+        {
+            "type": "java",
+            "name": "StandardArrayAlgorithms",
+            "request": "launch",
+            "mainClass": "StandardArrayAlgorithms",
+            "projectName": "CSA_50a692bb"
+        },
+        {
+            "type": "java",
             "name": "PetSimulator",
             "request": "launch",
             "mainClass": "PetSimulator.PetSimulator",

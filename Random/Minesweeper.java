@@ -25,6 +25,7 @@ public class Minesweeper {
         catch (Exception e) {
             
         }
+        sc.close();
     }
 
 }
