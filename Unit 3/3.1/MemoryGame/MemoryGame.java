@@ -28,6 +28,18 @@ public class MemoryGame {
     int buttons = 3;
     int numLetters = 3;
 
+    String diff=game.difficultyChoice().toLowerCase();
+    if(diff.equals("m")){
+      speed = 0.4;
+      buttons = 4;
+      numLetters = 5;
+    } else if(diff.equals("h")){
+      speed = 0.3;
+      buttons = 5;
+      numLetters = 7;
+    }
+  
+  
     game.createBoard(buttons, true);
 
     // TO DO: Play the game until user wants to quit.
@@ -96,5 +108,8 @@ public class MemoryGame {
         buttons++;
       }
     }
+
+    
+    
   }
 }

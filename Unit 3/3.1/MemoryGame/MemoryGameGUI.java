@@ -79,6 +79,15 @@ public class MemoryGameGUI extends JFrame
     JOptionPane.showMessageDialog(this, "Welcome to the Memory Game", "Welcome", JOptionPane.PLAIN_MESSAGE);
   }
 
+  public String difficultyChoice(){
+    JOptionPane.showMessageDialog(this, "Choose a difficulty:", "Welcome", JOptionPane.PLAIN_MESSAGE);
+    JFrame frame = new JFrame();
+    String seq = JOptionPane.showInputDialog(frame, "Easy (e), medium (m), or hard (h)");
+
+    return seq;
+  }
+  
+
   /**
    * Play the game by showing buttons with the text from a randomly ordered sequcence
    * of strings. The button text may appear in order from left to right
@@ -118,7 +127,7 @@ public class MemoryGameGUI extends JFrame
       } catch (InterruptedException ie) { /* do nothing */ }
 
       // change button color and show the memory string
-      gameButtons[buttonNum].setBackground(new Color(230, 204, 255));
+      gameButtons[buttonNum].setBackground(new Color((int)(Math.random()*215+40), (int)(Math.random()*215+40), (int)(Math.random()*215+40)));
       gameButtons[buttonNum].setText(sequence[i]);
 
       // wait a bit
