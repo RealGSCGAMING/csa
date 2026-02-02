@@ -28,25 +28,30 @@ public class MemoryGame {
     int buttons = 3;
     int numLetters = 3;
 
-    String diff=game.difficultyChoice().toLowerCase();
-    if(diff.equals("m")){
+    String diff = game.difficultyChoice();
+    if (diff == null) {
+      diff = "x";
+    }
+    diff = diff.toLowerCase();
+    if (diff.equals("m")) {
       speed = 0.4;
       buttons = 4;
       numLetters = 5;
-    } else if(diff.equals("h")){
+    } else if (diff.equals("h")) {
       speed = 0.3;
       buttons = 5;
       numLetters = 7;
+    } else {
+      // default to easy
+      speed = 0.5;
+      buttons = 3;
+      numLetters = 3;
     }
-  
-  
+
     game.createBoard(buttons, true);
 
     // TO DO: Play the game until user wants to quit.
     while (true) {
-
-      
-      
 
       // TO DO: Call the next method in RandomPermutation to create a random version
       // of the "memory strings"
@@ -86,6 +91,8 @@ public class MemoryGame {
           game.matched();
           // increase score
           score++;
+          speed *= 0.9;
+          numLetters++;
         } else {
           game.tryAgain();
         }
@@ -100,16 +107,9 @@ public class MemoryGame {
         game.quit();
         break;
       }
-      
+
       rounds++;
-      speed *= 1.1;
-      numLetters++;
-      if (rounds % 2 == 0) {
-        buttons++;
-      }
     }
 
-    
-    
   }
 }

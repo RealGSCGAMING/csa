@@ -9,6 +9,13 @@
             "name": "MemoryGame",
             "request": "launch",
             "mainClass": "MemoryGame.MemoryGame",
+            "projectName": "CSA_50a692bb"
+        },
+        {
+            "type": "java",
+            "name": "MemoryGame",
+            "request": "launch",
+            "mainClass": "MemoryGame.MemoryGame",
             "projectName": "csa_50a70edb"
         },
         {

@@ -19,8 +19,7 @@ import java.awt.event.*;
 /**
  * Class to play Memory Game.
  */
-public class MemoryGameGUI extends JFrame 
-{
+public class MemoryGameGUI extends JFrame {
   // used internally by the GUI
   private static final long serialVersionUID = 100L;
 
@@ -29,29 +28,31 @@ public class MemoryGameGUI extends JFrame
   private Boolean playRandom;
 
   /**
-   * Class constructor for creating a GUI for the Memory Game. 
+   * Class constructor for creating a GUI for the Memory Game.
    * Create a game board with the createBoard method and play the game by
    * providing a sequence of strings to playSequence.
    */
-  public MemoryGameGUI()
-  {
+  public MemoryGameGUI() {
     super();
     setResizable(false);
     setFocusable(true);
   }
- 
+
   /**
-   * Create a game board of buttons that will display strings from a given sequence.
-   * After you create the board, you can play the game by calling the playSequence method.
+   * Create a game board of buttons that will display strings from a given
+   * sequence.
+   * After you create the board, you can play the game by calling the playSequence
+   * method.
    * <P>
-   * Initial condition: The number of buttons should be positive and should not exceed the width of the screen
+   * Initial condition: The number of buttons should be positive and should not
+   * exceed the width of the screen
    * 
    * @param numButtons Number of buttons to display on a horizontal board
-   * @param playRandom If true, during play, the buttons will display text in a random order,
-   *          if false, they will show from left to right.
+   * @param playRandom If true, during play, the buttons will display text in a
+   *                   random order,
+   *                   if false, they will show from left to right.
    */
-  public void createBoard(int numButtons, Boolean playRandom)
-  {
+  public void createBoard(int numButtons, Boolean playRandom) {
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setSize(500, 400);
 
@@ -61,16 +62,16 @@ public class MemoryGameGUI extends JFrame
     panel1.setLayout(new FlowLayout());
     for (int i = 0; i < numButtons; i++) {
       gameButtons[i] = new JButton();
-      gameButtons[i].setPreferredSize(new Dimension(100,100));
+      gameButtons[i].setPreferredSize(new Dimension(100, 100));
       gameButtons[i].setBackground(Color.GRAY);
       panel1.add(gameButtons[i]);
     }
 
     // organize and size the GUI
     Container pane = getContentPane();
-    pane.add(panel1,  BorderLayout.PAGE_START);
+    pane.add(panel1, BorderLayout.PAGE_START);
     Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-    setLocation(dim.width/2 - 100, dim.height/2 - 100);
+    setLocation(dim.width / 2 - 100, dim.height / 2 - 100);
     pack();
     setVisible(true);
 
@@ -79,68 +80,65 @@ public class MemoryGameGUI extends JFrame
     JOptionPane.showMessageDialog(this, "Welcome to the Memory Game", "Welcome", JOptionPane.PLAIN_MESSAGE);
   }
 
-  public String difficultyChoice(){
+  public String difficultyChoice() {
     JOptionPane.showMessageDialog(this, "Choose a difficulty:", "Welcome", JOptionPane.PLAIN_MESSAGE);
     JFrame frame = new JFrame();
     String seq = JOptionPane.showInputDialog(frame, "Easy (e), medium (m), or hard (h)");
 
     return seq;
   }
-  
 
   /**
-   * Play the game by showing buttons with the text from a randomly ordered sequcence
+   * Play the game by showing buttons with the text from a randomly ordered
+   * sequcence
    * of strings. The button text may appear in order from left to right
    * or may appear on random buttons throughout the board.
    * <P>
-   * Initial condition: sequence should be not empty/null and already radmondized 
+   * Initial condition: sequence should be not empty/null and already radmondized
    * 
    * @param sequence an array of strings to show as individual button text
-   * @param delay how long the text will show, measured in tenths of a second
+   * @param delay    how long the text will show, measured in tenths of a second
    * @return a string containing the users guess, or null if the user cancels
    */
-  public String playSequence(String[] sequence, double delay)
-  {
+  public String playSequence(String[] sequence, double delay) {
     delay *= 1000;
     JOptionPane.showMessageDialog(this, "Click when ready!", "Ready to Play?", JOptionPane.PLAIN_MESSAGE);
 
     // show each memory strings on a botton
-    int buttonNum = -1; 
-    for (int i = 0; i < sequence.length; i++ )
-    {
-      if (playRandom)
-      {
-        buttonNum = (int)(Math.random() * gameButtons.length);
-      }
-      else
-      {
+    int buttonNum = -1;
+    for (int i = 0; i < sequence.length; i++) {
+      if (playRandom) {
+        buttonNum = (int) (Math.random() * gameButtons.length);
+      } else {
         buttonNum += 1;
-        if (buttonNum > gameButtons.length-1)
-        buttonNum = 0;
+        if (buttonNum > gameButtons.length - 1)
+          buttonNum = 0;
       }
 
       // wait a bit
-      // a try is like an if statement, "throwing" an error if the body of the try fails
-      try
-      {
-        Thread.sleep((int)delay);
-      } catch (InterruptedException ie) { /* do nothing */ }
+      // a try is like an if statement, "throwing" an error if the body of the try
+      // fails
+      try {
+        Thread.sleep((int) delay);
+      } catch (InterruptedException ie) {
+        /* do nothing */ }
 
       // change button color and show the memory string
-      gameButtons[buttonNum].setBackground(new Color((int)(Math.random()*215+40), (int)(Math.random()*215+40), (int)(Math.random()*215+40)));
+      gameButtons[buttonNum].setBackground(new Color((int) (Math.random() * 215 + 40), (int) (Math.random() * 215 + 40),
+          (int) (Math.random() * 215 + 40)));
       gameButtons[buttonNum].setText(sequence[i]);
 
       // wait a bit
-      try
-      {
-        Thread.sleep((int)delay);
-      } catch (InterruptedException ie) { /* do nothing */ }
+      try {
+        Thread.sleep((int) delay);
+      } catch (InterruptedException ie) {
+        /* do nothing */ }
 
       // show button as gray again and clear the memory string from it
       gameButtons[buttonNum].setBackground(Color.GRAY);
       gameButtons[buttonNum].setText("");
     }
-    
+
     JFrame frame = new JFrame();
     String seq = JOptionPane.showInputDialog(frame, "What is the sequence?");
 
@@ -150,20 +148,18 @@ public class MemoryGameGUI extends JFrame
   /**
    * Shows a message that the user matched the sequence
    */
-  public void matched()
-  { 
+  public void matched() {
     JOptionPane.showMessageDialog(this, "You matched!", "Congratulations", JOptionPane.PLAIN_MESSAGE);
   }
-    
+
   /**
    * Asks the user if they want to play another round of the game.
    * 
-   * @return true to continue playing, false to quit 
+   * @return true to continue playing, false to quit
    */
-  public boolean playAgain()
-  {
+  public boolean playAgain() {
     int n = JOptionPane.showConfirmDialog(this, "Do you want to play again?", "Memory Game", JOptionPane.YES_NO_OPTION);
-    if (n == JOptionPane.YES_OPTION )
+    if (n == JOptionPane.YES_OPTION)
       return true;
     return false;
   }
@@ -171,27 +167,25 @@ public class MemoryGameGUI extends JFrame
   /**
    * Show the current score and the number of times the game was played.
    * 
-   * @param score number of correct guesses
+   * @param score  number of correct guesses
    * @param rounds number of times game was played
    */
-  public void showScore(int score, int rounds)
-  {
-    JOptionPane.showMessageDialog(this, "You scored " + score + " out of " + rounds, "Score Summary", JOptionPane.PLAIN_MESSAGE);
+  public void showScore(int score, int rounds) {
+    JOptionPane.showMessageDialog(this, "You scored " + score + " out of " + rounds, "Score Summary",
+        JOptionPane.PLAIN_MESSAGE);
   }
-  
+
   /**
    * Shows a "try again" message.
    */
-  public void tryAgain()
-  { 
+  public void tryAgain() {
     JOptionPane.showMessageDialog(this, "Try again...", "Oops", JOptionPane.PLAIN_MESSAGE);
   }
 
   /**
    * Close the board, ending the game.
    */
-  public void quit()
-  {
+  public void quit() {
     this.dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
   }
 

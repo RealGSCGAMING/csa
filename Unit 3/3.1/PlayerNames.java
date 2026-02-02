@@ -38,4 +38,8 @@ class Player {
     public Player(String h) {
 
     }
+
+    public String getName() {
+        return "";
+    }
 }
