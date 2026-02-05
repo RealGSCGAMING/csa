@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "ScuffedWordle",
+            "request": "launch",
+            "mainClass": "ScuffedWordle",
+            "projectName": "CSA_50a692bb"
+        },
+        {
+            "type": "java",
+            "name": "lhkjhgjkhjk",
+            "request": "launch",
+            "mainClass": "lhkjhgjkhjk",
+            "projectName": "CSA_50a692bb"
+        },
+        {
+            "type": "java",
             "name": "MemoryGame",
             "request": "launch",
             "mainClass": "MemoryGame.MemoryGame",
