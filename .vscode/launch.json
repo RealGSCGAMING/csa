@@ -6,6 +6,48 @@
     "configurations": [
         {
             "type": "java",
+            "name": "ArrayListMethods",
+            "request": "launch",
+            "mainClass": "ArrayListMethods",
+            "projectName": "CSA_50a692bb"
+        },
+        {
+            "type": "java",
+            "name": "ArrayListExample",
+            "request": "launch",
+            "mainClass": "ArrayListExample",
+            "projectName": "CSA_50a692bb"
+        },
+        {
+            "type": "java",
+            "name": "ArrayListPerson",
+            "request": "launch",
+            "mainClass": "ArrayListPerson",
+            "projectName": "CSA_50a692bb"
+        },
+        {
+            "type": "java",
+            "name": "WrapperPractice",
+            "request": "launch",
+            "mainClass": "WrapperPractice",
+            "projectName": "CSA_50a692bb"
+        },
+        {
+            "type": "java",
+            "name": "NotWordle",
+            "request": "launch",
+            "mainClass": "NotWordle.NotWordle",
+            "projectName": "CSA_50a692bb"
+        },
+        {
+            "type": "java",
+            "name": "HazemianRunner",
+            "request": "launch",
+            "mainClass": "h.HazemianRunner",
+            "projectName": "CSA_50a692bb"
+        },
+        {
+            "type": "java",
             "name": "ScuffedWordle",
             "request": "launch",
             "mainClass": "ScuffedWordle",

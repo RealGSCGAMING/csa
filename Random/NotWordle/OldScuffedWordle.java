@@ -1,17 +1,35 @@
+package NotWordle;
+import java.io.*;
 import java.util.Scanner;
 
-public class ScuffedWordle {
+public class OldScuffedWordle {
 
-    static String[] words = { "apple", "block", "slope", "chair", "beans", "aches", "bears", "cable", "dodge", "eagle",
-            "fable", "gauge", "hatch", "inlet", "jelly", "knock", "latch", "mango",
-            "noble", "ocean", "piano", "quack", "ranch", "slope", "table", "ultra", "vague", "wedge", "xenon",
-            "yacht", "zebra", "adobe", "bacon", "cable", "dodge", "eagle", "fable", "gauge", "hatch", "inlet", "jelly",
-            "knock", "latch", "mango" };
+    static String[] words = new String[5757];
+
+    private static void loadWords() throws IOException {
+        File f = new File("Random\\words.txt");
+        Scanner fileScan = new Scanner(f);
+        int i = 0;
+        while (fileScan.hasNext()) {
+            words[i] = fileScan.nextLine();
+            i++;
+        }
+        fileScan.close();
+    }
+
     static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
 
-        clearConsole();
+        try {
+            loadWords();
+            clearConsole();
+        } catch (Exception e) {
+            System.out.println("An error occured when loading the words.");
+            System.out.println(e);
+            return;
+        }
+
         System.out.println("Welcome to Wordle! Try to guess the 5 letter word. Type 'q' to quit.");
         System.out.println("[G] = correct letter in correct place");
         System.out.println("[?] = correct letter in wrong place");
@@ -24,8 +42,8 @@ public class ScuffedWordle {
             int random = (int) (Math.random() * words.length);
             String word = words[random];
             String[] wordArray = word.split("");
-            //System.out.println(word);
-            //System.out.println(Arrays.toString(wordArray));
+            // System.out.println(word);
+            // System.out.println(Arrays.toString(wordArray));
             boolean quit = false;
 
             while (true) {
