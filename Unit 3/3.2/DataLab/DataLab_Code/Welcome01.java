@@ -1,9 +1,8 @@
-package DataLab.DataLab_Code;
 import core.data.*;
 
 public class Welcome01 {
    public static void main(String[] args) {
-      String id = "KATL";
+      String id = "KSAN";
       DataSource ds = DataSource.connect("https://forecast.weather.gov/xml/current_obs/" + id + ".xml"); 
 
       ds.setCacheTimeout(15 * 60);  

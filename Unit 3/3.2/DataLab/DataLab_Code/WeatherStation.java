@@ -1,4 +1,3 @@
-package DataLab.DataLab_Code;
 /*
  Represents information about a NWS weather station
 */
