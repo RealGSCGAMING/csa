@@ -6,6 +6,34 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Welcome01",
+            "request": "launch",
+            "mainClass": "DataLab.DataLab_Code.Welcome01",
+            "projectName": "CSA_50a692bb"
+        },
+        {
+            "type": "java",
+            "name": "ArrayListAlgorithms",
+            "request": "launch",
+            "mainClass": "ArrayListAlgorithms",
+            "projectName": "CSA_50a692bb"
+        },
+        {
+            "type": "java",
+            "name": "HorseFRQ",
+            "request": "launch",
+            "mainClass": "HorseFRQ",
+            "projectName": "CSA_50a692bb"
+        },
+        {
+            "type": "java",
+            "name": "HorseBarnRunner",
+            "request": "launch",
+            "mainClass": "HorseBarn.HorseBarnRunner",
+            "projectName": "CSA_50a692bb"
+        },
+        {
+            "type": "java",
             "name": "ArrayListMethods",
             "request": "launch",
             "mainClass": "ArrayListMethods",
