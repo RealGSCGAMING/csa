@@ -1,6 +1,7 @@
 // CODE TO ADD
 public class WrapperPractice
 {
+    @SuppressWarnings("removal")
     public static void main(String[] args)
     {
         Integer i = new Integer(5);
@@ -14,5 +15,6 @@ public class WrapperPractice
 
         Integer a = 3;
         System.out.println(3);
+        System.out.println(a);
     }
 }

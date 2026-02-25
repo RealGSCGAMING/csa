@@ -6,6 +6,34 @@
     "configurations": [
         {
             "type": "java",
+            "name": "GameRunner",
+            "request": "launch",
+            "mainClass": "Concentration.GameRunner",
+            "projectName": "CSA_50a692bb"
+        },
+        {
+            "type": "java",
+            "name": "TileTester",
+            "request": "launch",
+            "mainClass": "Concentration.TileTester",
+            "projectName": "CSA_50a692bb"
+        },
+        {
+            "type": "java",
+            "name": "Traversing2DArrays",
+            "request": "launch",
+            "mainClass": "Traversing2DArrays",
+            "projectName": "CSA_50a692bb"
+        },
+        {
+            "type": "java",
+            "name": "InitList2D",
+            "request": "launch",
+            "mainClass": "InitList2D",
+            "projectName": "CSA_50a692bb"
+        },
+        {
+            "type": "java",
             "name": "Cereal",
             "request": "launch",
             "mainClass": "DataLab.DataLab_Code.Cereal",
