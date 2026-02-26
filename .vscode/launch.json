@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Names2D",
+            "request": "launch",
+            "mainClass": "Names2D",
+            "projectName": "CSA_50a692bb"
+        },
+        {
+            "type": "java",
+            "name": "Numbers2D",
+            "request": "launch",
+            "mainClass": "Numbers2D",
+            "projectName": "CSA_50a692bb"
+        },
+        {
+            "type": "java",
             "name": "GameRunner",
             "request": "launch",
             "mainClass": "Concentration.GameRunner",
