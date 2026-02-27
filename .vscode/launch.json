@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "ImageModifierFRQ",
+            "request": "launch",
+            "mainClass": "ImageModifierFRQ",
+            "projectName": "CSA_50a692bb"
+        },
+        {
+            "type": "java",
             "name": "Names2D",
             "request": "launch",
             "mainClass": "Names2D",
