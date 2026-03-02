@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "ImageApp",
+            "request": "launch",
+            "mainClass": "ImageApp.ImageApp",
+            "projectName": "CSA_50a692bb"
+        },
+        {
+            "type": "java",
             "name": "ImageModifierFRQ",
             "request": "launch",
             "mainClass": "ImageModifierFRQ",
