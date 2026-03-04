@@ -15,7 +15,7 @@ public class Welcome03_List {
       ArrayList<WeatherStation> allstns = ds.fetchList("WeatherStation", "station/station_name",
             "station/station_id", "station/state",
             "station/latitude", "station/longitude");
-      // ds1.printUsageString();
+       ds.printUsageString();
       System.out.println("Total stations: " + allstns.size());
 
       Scanner sc = new Scanner(System.in);
