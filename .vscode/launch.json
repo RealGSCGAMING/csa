@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "PhraseData",
+            "request": "launch",
+            "mainClass": "PhraseData",
+            "projectName": "CSA_50a692bb"
+        },
+        {
+            "type": "java",
             "name": "ImageApp",
             "request": "launch",
             "mainClass": "ImageApp.ImageApp",
