@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "StickerCalculator",
+            "request": "launch",
+            "mainClass": "StickerCalculator",
+            "projectName": "csa_ab0402ed"
+        },
+        {
+            "type": "java",
             "name": "PhraseData",
             "request": "launch",
             "mainClass": "PhraseData",
