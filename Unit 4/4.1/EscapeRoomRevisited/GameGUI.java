@@ -197,18 +197,21 @@ public class GameGUI extends JComponent implements KeyListener {
           questionNum = (int) (Math.random() * quiz.length);
         } while (usedQuiz[questionNum]);
         String ans = askQuestion(quiz[questionNum][0]);
-        if (ans.toLowerCase().equals(quiz[questionNum][1])) {
-          usedQuiz[questionNum] = true;
-          pickupPrize();
-          score += correctAns;
-          collectedPrizes++;
-          showMessage("Great job!\nYou picked up a prize!");
-          if (collectedPrizes >= playerLevel) {
-            showMessage("You have collected every prize! Press Q to quit and see your score.");
+        if (ans != null) {
+          if (ans.toLowerCase().equals(quiz[questionNum][1])) {
+            usedQuiz[questionNum] = true;
+            pickupPrize();
+            score += correctAns;
+            collectedPrizes++;
+            showMessage("Great job!\nYou picked up a prize!");
+            if (collectedPrizes >= playerLevel) {
+              showMessage("You have collected every prize! Press Q to quit and see your score.");
+            }
+
+          } else {
+            showMessage("Wrong answer! If you're stuck, press H for tips.");
+            score -= wrongAns;
           }
-        } else {
-          showMessage("Wrong answer! If you're stuck, press H for tips.");
-          score -= wrongAns;
         }
       }
     }
@@ -251,7 +254,7 @@ public class GameGUI extends JComponent implements KeyListener {
     // R key: reset level
     if (e.getKeyCode() == KeyEvent.VK_R) {
       String ans = askQuestion("Are you sure you want to reset your level? Type \"yes\" to reset.");
-      if (ans.toLowerCase().equals("yes")) {
+      if (ans != null && ans.toLowerCase().equals("yes")) {
         playerLevel = 1;
         showMessage("Your player level has been reset. Please restart the game.");
         endGame();
@@ -262,7 +265,7 @@ public class GameGUI extends JComponent implements KeyListener {
     if (e.getKeyCode() == KeyEvent.VK_X) {
       String ans = askQuestion(
           "Are you sure you want to quit early?\nWARNING: You will lose a level!\nType \"yes\" to quit.");
-      if (ans.toLowerCase().equals("yes")) {
+      if (ans != null && ans.toLowerCase().equals("yes")) {
         score = -1;
         endGame();
       }
