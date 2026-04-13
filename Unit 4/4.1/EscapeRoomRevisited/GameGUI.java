@@ -13,6 +13,7 @@ import java.awt.Image;
 import java.awt.Point;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.Font;
 
 import javax.swing.JComponent;
 import javax.swing.JFrame;
@@ -35,8 +36,8 @@ public class GameGUI extends JComponent implements KeyListener {
   static final long serialVersionUID = 415L;
 
   // constants for gameboard confg
-  private static final int WIDTH = 510;
-  private static final int HEIGHT = 360;
+  private static final int WIDTH = 520;
+  private static final int HEIGHT = 380;
   private static final int SPACE_SIZE = 60;
   private static final int GRID_W = 8;
   private static final int GRID_H = 5;
@@ -54,7 +55,7 @@ public class GameGUI extends JComponent implements KeyListener {
   private int currY = 15;
   private boolean atPrize;
   private Point playerLoc;
-  private int playerSteps;
+  // private int playerSteps;
   private int collectedPrizes = 0;
 
   // walls, player level, and prizes
@@ -72,6 +73,8 @@ public class GameGUI extends JComponent implements KeyListener {
   private int wrongAns = 7; // penalty
   private int score = 0;
   private int quits = 0;
+  private boolean finished = false;
+  public boolean playAgain = false;
 
   // quiz
   String[][] quiz;
@@ -84,10 +87,13 @@ public class GameGUI extends JComponent implements KeyListener {
    * from two files on disk. Creates th gameboard with a background image,
    * walls, prizes, and a player.
    */
-  public GameGUI() throws IOException {
+  public GameGUI() throws IOException, InterruptedException {
     newPlayerLevel();
     createQuiz();
     createBoard();
+    while (!finished) {
+      Thread.sleep(1000);
+    }
   }
 
   /**
@@ -148,9 +154,9 @@ public class GameGUI extends JComponent implements KeyListener {
     try {
       Scanner sc = new Scanner(new File("4.1\\EscapeRoomRevisited\\level.csv"));
       playerLevel = sc.nextInt();
-      if (playerLevel > 12) {
+      if (playerLevel > 12 || playerLevel < 1) {
         sc.close();
-        throw new Exception("Player level is too high!");
+        throw new Exception("Player level is invalid!");
       }
       sc.close();
 
@@ -176,6 +182,7 @@ public class GameGUI extends JComponent implements KeyListener {
     }
 
     numWalls = 8 + playerLevel;
+    correctAns = 15 - playerLevel;
   }
 
   /**
@@ -205,7 +212,9 @@ public class GameGUI extends JComponent implements KeyListener {
             collectedPrizes++;
             showMessage("Great job!\nYou picked up a prize!");
             if (collectedPrizes >= playerLevel) {
-              showMessage("You have collected every prize! Press Q to quit and see your score.");
+              // showMessage("You have collected every prize! Press Q to quit and see your
+              // score.");
+              quitGame();
             }
 
           } else {
@@ -219,25 +228,9 @@ public class GameGUI extends JComponent implements KeyListener {
     // Q key: quit game if all questions have been answered
     if (e.getKeyCode() == KeyEvent.VK_Q) {
       /* your code here */
-      if (collectedPrizes >= playerLevel) {
-        score -= playerSteps;
-        showMessage("You win! Your score: " + score);
-        if (score > 0) {
-          if (playerLevel < 12) {
-            playerLevel++;
-            showMessage("You leveled up! Restart the game to play again.");
-          } else {
-            showMessage("You've won the game! You are a master of riddles!");
-          }
-        }
-        endGame();
-      } else {
-        showMessage("You need to collect all the prizes!");
-        quits++;
-        if (quits > 2) {
-          showMessage("Are you stuck? Press X to quit without collecting every prize.");
-        }
-      }
+
+      // This code has been moved to the quitGame function
+      quitGame();
     }
 
     // H key: help
@@ -245,6 +238,7 @@ public class GameGUI extends JComponent implements KeyListener {
       String msg = "Move player: arrows or WASD keys\n" +
           "Pickup prize: P\n" +
           "Quit: Q\n" +
+          "Quit Early: X\n" +
           "Help: H\n" +
           "Reset Game: R\n" +
           "\nAnswer help:\nEvery answer is a noun. It should be singular (not plural).";
@@ -267,22 +261,45 @@ public class GameGUI extends JComponent implements KeyListener {
           "Are you sure you want to quit early?\nWARNING: You will lose a level!\nType \"yes\" to quit.");
       if (ans != null && ans.toLowerCase().equals("yes")) {
         score = -1;
+        if (playerLevel > 1)
+          playerLevel--;
         endGame();
       }
     }
 
     // Arrow and WASD keys: moved down, up, left or right
     if (e.getKeyCode() == KeyEvent.VK_DOWN || e.getKeyCode() == KeyEvent.VK_S) {
-      score += movePlayer(0, MOVE);
+      score -= movePlayer(0, MOVE);
     }
     if (e.getKeyCode() == KeyEvent.VK_UP || e.getKeyCode() == KeyEvent.VK_W) {
-      score += movePlayer(0, -MOVE);
+      score -= movePlayer(0, -MOVE);
     }
     if (e.getKeyCode() == KeyEvent.VK_LEFT || e.getKeyCode() == KeyEvent.VK_A) {
-      score += movePlayer(-MOVE, 0);
+      score -= movePlayer(-MOVE, 0);
     }
     if (e.getKeyCode() == KeyEvent.VK_RIGHT || e.getKeyCode() == KeyEvent.VK_D) {
-      score += movePlayer(MOVE, 0);
+      score -= movePlayer(MOVE, 0);
+    }
+  }
+
+  void quitGame() {
+    if (collectedPrizes >= playerLevel) {
+      // score -= playerSteps;
+      showMessage("You win! Your score: " + score + (score > 0 && playerLevel < 12 ? "\nYou leveled up!" : ""));
+      if (score > 0) {
+        if (playerLevel < 12) {
+          playerLevel++;
+        } else {
+          showMessage("You've won the game! You are a master of riddles!");
+        }
+      }
+      endGame();
+    } else {
+      showMessage("You need to collect all the prizes!");
+      quits++;
+      if (quits > 1) {
+        showMessage("Are you stuck? Press X to quit without collecting every prize.");
+      }
     }
   }
 
@@ -321,10 +338,12 @@ public class GameGUI extends JComponent implements KeyListener {
 
     // create the game frame
     frame = new JFrame();
-    frame.setTitle("EscapeRoom");
+    frame.setTitle("Riddle Room");
     frame.setSize(WIDTH, HEIGHT);
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.add(this);
+    // Center the frame
+    frame.setLocationRelativeTo(null);
     frame.setVisible(true);
     frame.setResizable(false);
     frame.addKeyListener(this);
@@ -332,7 +351,7 @@ public class GameGUI extends JComponent implements KeyListener {
     checkForPrize();
 
     showMessage("Welcome to the Riddle Room! Press H to learn how to play."
-        + (playerLevel > 1 ? "\nYou are level " + playerLevel + ": " + playerRank : ""));
+        + "\nYou are level " + playerLevel + ": " + playerRank);
   }
 
   /**
@@ -351,9 +370,9 @@ public class GameGUI extends JComponent implements KeyListener {
     int newY = currY + incry;
 
     // check if off grid horizontally and vertically
-    if ((newX < 0 || newX > WIDTH - SPACE_SIZE) || (newY < 0 || newY > HEIGHT - SPACE_SIZE)) {
+    if ((newX < 0 || newX > WIDTH + 20 - SPACE_SIZE) || (newY < 0 || newY > HEIGHT - 20 - SPACE_SIZE)) {
       showMessage("You have tried to go off the grid!");
-      return -offGridVal;
+      return offGridVal;
     }
 
     // determine if a wall is in the way
@@ -369,27 +388,27 @@ public class GameGUI extends JComponent implements KeyListener {
       // moving RIGHT, check to the right
       if ((incrx > 0) && (currX <= startX) && (startX <= newX) && (currY >= startY) && (currY <= endY)) {
         showMessage("A wall is in the way.");
-        return -hitWallVal;
+        return hitWallVal;
       }
       // moving LEFT, check to the left
       else if ((incrx < 0) && (currX >= startX) && (startX >= newX) && (currY >= startY) && (currY <= endY)) {
         showMessage("A wall is in the way.");
-        return -hitWallVal;
+        return hitWallVal;
       }
       // moving DOWN check below
       else if ((incry > 0) && (currY <= startY && startY <= newY && currX >= startX && currX <= endX)) {
         showMessage("A wall is in the way.");
-        return -hitWallVal;
+        return hitWallVal;
       }
       // moving UP check above
       else if ((incry < 0) && (currY >= startY) && (startY >= newY) && (currX >= startX) && (currX <= endX)) {
         showMessage("A wall is in the way.");
-        return -hitWallVal;
+        return hitWallVal;
       }
     }
 
     // all is well, move player
-    playerSteps++;
+    // playerSteps++;
     currX += incrx;
     currY += incry;
     repaint();
@@ -414,7 +433,7 @@ public class GameGUI extends JComponent implements KeyListener {
    */
   private String askQuestion(String q) {
     // \n was parsed as a literal by the split method, replace with escape sequence
-    return JOptionPane.showInputDialog(q.replace("\\n", "\n"));
+    return JOptionPane.showInputDialog(frame, q.replace("\\n", "\n"));
   }
 
   /**
@@ -435,6 +454,7 @@ public class GameGUI extends JComponent implements KeyListener {
       }
     }
     atPrize = false;
+    repaint();
   }
 
   /**
@@ -467,6 +487,13 @@ public class GameGUI extends JComponent implements KeyListener {
     } catch (IOException e) {
       System.err.println("Could not level up.");
     }
+
+    String again = askQuestion("Would you like to play again? (Y/N)");
+    if (again.toLowerCase().equals("y")) {
+      playAgain = true;
+    }
+
+    finished = true;
 
     setVisible(false);
     frame.dispose();
@@ -543,9 +570,12 @@ public class GameGUI extends JComponent implements KeyListener {
 
     // add walls
     for (Rectangle r : walls) {
-      g2.setPaint(Color.DARK_GRAY);
+      g2.setPaint(Color.BLACK);
       g2.fill(r);
     }
+
+    g.setFont(new Font("Lucida Sans Typewriter", Font.PLAIN, 25));
+    g.drawString("Score: " + score, 350, 335);
 
     // draw player, saving its location
     if (atPrize) {
