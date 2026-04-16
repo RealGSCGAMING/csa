@@ -28,6 +28,7 @@ public class Library
       String title = sc.nextLine();
       if (title.equals("")) // end of data
       {
+        sc.close();
         return;
       }
       
