@@ -64,5 +64,21 @@ public class Data
     for (Book b : sortedBooks)
       System.out.println("    " +  b.getTitle());
   }
+
+  /**
+     * Scans an ArrayList of Books to check if it is sorted in alphabetical order by title.
+     * 
+     * @param arr The ArrayList to be scanned
+     * 
+     * @return true if the ArrayList is sorted, false otherwise
+     */
+  public static boolean scan(ArrayList<Book> arr) {
+    for (int i = 0; i < arr.size() - 1; i++) {
+      if (arr.get(i).getTitle().compareTo(arr.get(i + 1).getTitle()) > 0) {
+        return false;
+      }
+    }
+    return true;
+  }
   
 }
