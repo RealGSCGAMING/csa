@@ -114,7 +114,7 @@ public class SearchAndSortAnalysis {
     }
 
     System.out.println(fastestSort + " was the fastest sorting algorithm at " + fastestSortTime + " seconds.");
-    System.out.println(fastestSearch + " was the faastest searching algorithm at " + fastestSearchTime + " seconds.");
+    System.out.println(fastestSearch + " was the fastest searching algorithm at " + fastestSearchTime + " seconds.");
     System.out.println("The total execution time of all algorithms was " + (execTime + execTime2 + execTime3 + execTime4 + execTime5 + execTime6) + " seconds.");
   }
 }

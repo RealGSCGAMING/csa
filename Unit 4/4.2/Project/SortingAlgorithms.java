@@ -27,7 +27,7 @@ class SortSelection extends SortBase {
             // Set the beginning of the unsorted section
             int minIndex = i;
 
-            // Find the smallest element in the unsorted section
+            // Find the lowest element alphabetically in the unsorted section
             for (int j = i + 1; j < arr.size(); j++) {
                 if (arr.get(j).getTitle().compareTo(arr.get(minIndex).getTitle()) < 0) {
                     minIndex = j;
@@ -57,16 +57,21 @@ class SortInsertion extends SortBase {
      */
     public static ArrayList<Book> sort(ArrayList<Book> arr) {
 
+        // Repeat for each item in the array starting with the second item
         for (int i = 1; i < arr.size(); i++) {
+
+            // Define the boundary between the sorted and unsorted sections
             Book curr = arr.get(i);
             int marker = i - 1;
 
             while (marker >= 0) {
+                // If the current item is lower alphabetically than the item at the marker, swap them and move the marker down
                 if (curr.getTitle().compareTo(arr.get(marker).getTitle()) < 0) {
                     arr.set(marker + 1, arr.get(marker));
                     arr.set(marker, curr);
                 } else {
-                    marker = -1;
+                    // Item is as far down as it can go, so end the loop
+                    marker = 0;
                 }
 
                 marker--;
@@ -84,8 +89,6 @@ class SortMerge extends SortBase {
      * @param arr The ArrayList to be sorted
      * 
      * @param lt  The first index of arr
-     * 
-     * @param m   The midpoint of arr
      * 
      * @param rt  The last index of arr
      * 
@@ -119,6 +122,8 @@ class SortMerge extends SortBase {
             //initial indices of first and second subarrays
             int i = 0;
             int j = 0;
+
+            //Initial index of merged subarray array
             int k = lt;
             while (i < n1 && j < n2) {
                 if (left.get(i).getTitle().compareTo(right.get(j).getTitle()) < 0) {
@@ -131,12 +136,14 @@ class SortMerge extends SortBase {
                 k++;
             }
 
+            //copy remaining elements of L if any
             while (i < n1) {
                 arr.set(k, left.get(i));
                 i++;
                 k++;
             }
 
+            //copy remaining elements of R if any
             while (j < n2) {
                 arr.set(k, right.get(j));
                 j++;
