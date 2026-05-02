@@ -5,13 +5,14 @@ public class BSideLabel {
     public static final int STICKER = 330;
     public static final int LICENSED = 385;
     public static final int SHIRT = 3850;
-    public static final int SHIPPING = 3000;
+    public static final int SHIPPING = 4000;
 
     public static final boolean COUPON = true;
     public static final boolean TENSO = true;
     public static final boolean TARIFF = true;
 
-    public static final double CONVERSION = 159.77;
+    public static final double CONVERSION_RATE = 159.59;
+    public static final double TARIFF_RATE = 0.2;
 
     public static int presetStickers = -1;
     public static int presetShirts = -1;
@@ -111,7 +112,7 @@ public class BSideLabel {
 
             // Donald trump fee
             if (TARIFF) {
-                int tariff = (int) (totalCost * 0.2);
+                int tariff = (int) (totalCost * TARIFF_RATE);
                 totalCost += tariff;
                 System.out.println("Donald Trump fee: +" + tariff + " yen");
             }
@@ -168,6 +169,6 @@ public class BSideLabel {
 
     // Converts yen to usd with the set conversion rate
     public static int yenToUsd(int yen) {
-        return (int) Math.round((double) yen / CONVERSION);
+        return (int) Math.round((double) yen / CONVERSION_RATE);
     }
 }
